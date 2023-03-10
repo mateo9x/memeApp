@@ -1,0 +1,26 @@
+<header>
+  <nav class="nav-bar">
+    <div class="nav-left" routerLink="">
+      <span class="app-name">Memiczna strona</span>
+    </div>
+    <div class="nav-right">
+      <section class="navigations">
+        <div class="navigation-div">
+          <a routerLink="pending">Oczekujące</a>
+          <a routerLink="new-meme" *ngIf="userLogged">Dodaj mema</a>
+        </div>
+      </section>
+      <section class="profile">
+        <sign-in *ngIf="!userLogged"></sign-in>
+        <profile-nav *ngIf="userLogged" [profilePhotoUrl]="userLogged.photoUrl"></profile-nav>
+      </section>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <p-toast class="custom-toast" key="success"></p-toast>
+  <p-toast class="toast-warn" key="warn"></p-toast>
+  <p-toast class="toast-error" key="error"></p-toast>
+  <router-outlet></router-outlet>
+</main>

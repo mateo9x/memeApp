@@ -1,0 +1,15 @@
+:root {
+  --main-background-color: #181818;
+  --main-navbar-background-color: #100f0f;
+  --main-text-color: white;
+  --main-text-color-hover: #a4a3a3;
+}
+
+html, body { height: 100%; }
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+  color: var(--main-text-color);
+  background-color: var(--main-background-color);
+}
