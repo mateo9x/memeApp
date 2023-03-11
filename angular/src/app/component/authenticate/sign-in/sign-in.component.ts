@@ -1,5 +1,5 @@
 import {Component, ElementRef, HostListener} from '@angular/core';
-import {AuthenticateService} from "../../../services/authenticate.service";
+import {AuthenticateService} from "../../../service/authenticate.service";
 import {SignInFormService} from "./sign-in.form.service";
 import {FormGroup} from "@angular/forms";
 

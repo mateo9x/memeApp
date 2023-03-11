@@ -1,15 +1,97 @@
 :root {
-  --main-background-color: #181818;
-  --main-navbar-background-color: #100f0f;
-  --main-text-color: white;
-  --main-text-color-hover: #a4a3a3;
+  --main-background-color: #ffffff;
+  --main-navbar-background-color: #e5e4e4;
+  --main-text-color: #dadada;
+  --main-text-color-hover: #da5413;
+  --main-scrollbar-color: #dad6d6;
+  --main-button-color: #da5413;
+  --main-button-color-hover: #b2420c;
 }
 
-html, body { height: 100%; }
+@font-face {
+  font-family: tiltNeon;
+  src: url('./assets/fonts/TiltNeon-Regular.ttf') format("opentype");
+}
 
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: tiltNeon, Roboto, "Helvetica Neue", sans-serif;
+}
 
 body {
   color: var(--main-text-color);
   background-color: var(--main-background-color);
+}
+
+fa-icon {
+  padding: 0 10px;
+}
+
+fa-icon:hover {
+  color: var(--main-text-color-hover);
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--main-scrollbar-color);
+  border-radius: 10px;
+}
+
+.p-button {
+  margin: 10px !important;
+  padding: 15px !important;
+}
+.p-button, .p-button[disabled] {
+  background: var(--main-button-color) !important;
+  border: var(--main-button-color) !important;
+}
+
+.p-button:hover {
+  background: var(--main-button-color-hover) !important;
+  border: var(--main-button-color-hover) !important;
+}
+
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-focus, .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box:hover {
+  box-shadow: none !important;
+  border-color: var(--main-button-color) !important;
+}
+
+.p-checkbox .p-checkbox-box.p-highlight {
+  box-shadow: none !important;
+  background: var(--main-button-color) !important;
+  border: var(--main-button-color) !important;
+}
+
+.p-checkbox:hover .p-checkbox-box.p-highlight:hover {
+  box-shadow: none !important;
+  background: var(--main-button-color-hover) !important;
+  border: var(--main-button-color-hover) !important;
+}
+
+.p-inputtext:hover, .p-inputtext:enabled:focus {
+  border-color: var(--main-button-color) !important;
+  box-shadow: var(--main-button-color) !important;
+}
+
+a {
+  font-size: 18px;
+  color: var(--main-text-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--main-text-color-hover);
 }

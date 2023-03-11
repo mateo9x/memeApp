@@ -26,4 +26,8 @@ public class User {
     private String email;
     @Column
     private String password;
+    @Column(name = "photo_url")
+    private String photoUrl;
+    @Column(name = "reset_token")
+    private String resetToken;
 }

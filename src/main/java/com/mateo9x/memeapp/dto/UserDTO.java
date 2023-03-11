@@ -15,5 +15,7 @@ public class UserDTO {
     private String email;
     @JsonIgnore
     private String password;
+    private String photoUrl;
+    private String resetToken;
 
 }

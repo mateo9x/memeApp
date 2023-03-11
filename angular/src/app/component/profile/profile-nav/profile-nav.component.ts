@@ -1,28 +1,30 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {MenuItem} from "primeng/api";
+import {Component, ElementRef, HostListener, Input} from '@angular/core';
+import {User} from "../../../model/user";
 
 @Component({
   selector: 'profile-nav',
   templateUrl: './profile-nav.component.html',
   styleUrls: ['./profile-nav.component.scss']
 })
-export class ProfileNavComponent implements OnInit {
+export class ProfileNavComponent {
 
   @Input()
-  profilePhotoUrl: string;
+  user: User;
 
-  profileOptions: MenuItem[] = [{
-    label: 'Profil',
-    icon: 'pi pi-users',
-    items: [
-      {label: 'Wyloguj się', icon: 'pi pi-sign-out', routerLink: 'logout'}
-    ]
-  }];
+  defaultPhotoUrl = '/assets/profile-not-found.png';
+  expanded = false;
 
-  constructor() {
+  constructor(private eRef: ElementRef) {
   }
 
-  ngOnInit() {
+  toggleExpanded() {
+    this.expanded = !this.expanded;
   }
 
+  @HostListener('document:click', ['$event'])
+  clickOut(event: any) {
+    if (!this.eRef.nativeElement.contains(event.target)) {
+      this.expanded = false;
+    }
+  }
 }

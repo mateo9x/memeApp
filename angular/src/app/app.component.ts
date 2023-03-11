@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {UserService} from "./services/user.service";
+import {UserService} from "./service/user.service";
 import {User} from "./model/user";
 import {Subscription} from "rxjs";
 import {MenuItem} from "primeng/api";
+import {ThemeService} from "./service/theme/theme.service";
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,6 @@ import {MenuItem} from "primeng/api";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-
   userLogged: User;
   userSubscription: Subscription;
   profileOptions: MenuItem[] = [{
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit, OnDestroy {
     ]
   }];
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private themeService: ThemeService) {
   }
 
   ngOnInit() {
@@ -34,6 +34,7 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       });
     }
+    this.setStartTheme();
   }
 
   startSubscriptions() {
@@ -46,6 +47,14 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.userSubscription.unsubscribe();
+  }
+
+  setStartTheme() {
+    this.themeService.setStartTheme();
+  }
+
+  changeTheme() {
+    this.themeService.changeTheme();
   }
 
 }
