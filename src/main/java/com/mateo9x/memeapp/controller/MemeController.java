@@ -23,6 +23,12 @@ public class MemeController {
 
     private final MemeService memeService;
 
+    @GetMapping("/memes/{memeId}")
+    public ResponseEntity<MemeDTO> getMemeById(@PathVariable Long memeId) {
+        log.info("REST request to get meme by id: {}", memeId);
+        return ResponseEntity.ok(memeService.getMemeById(memeId));
+    }
+
     @GetMapping("/memes/approved")
     public ResponseEntity<List<MemeDTO>> getApprovedMemes() {
         log.info("REST request to get all approved memes");

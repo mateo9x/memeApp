@@ -14,6 +14,10 @@ export class MemeService {
   constructor(private http: HttpClient) {
   }
 
+  public getMemeById(id: number): Observable<Meme> {
+    return this.http.get<Meme>(`${this.MEME_URL}/${id}`);
+  }
+
   public getApprovedMemes(): Observable<Meme[]> {
     return this.http.get<Meme[]>(`${this.MEME_URL}/approved`);
   }

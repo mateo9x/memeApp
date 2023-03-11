@@ -1,5 +1,4 @@
 import {Component, Input} from '@angular/core';
-import {Router} from "@angular/router";
 import {Meme} from "../../model/meme";
 import {MemeService} from "../../service/meme.service";
 import {User} from "../../model/user";
@@ -18,11 +17,7 @@ export class MemeComponent {
 
   defaultUserUrl = '/assets/profile-not-found.png';
 
-  constructor(private router: Router, private memeService: MemeService) {
-  }
-
-  displayUserMemes(userId: number) {
-    this.router.navigate([`user/${userId}`]).finally();
+  constructor(private memeService: MemeService) {
   }
 
   updateMemeUpVote() {

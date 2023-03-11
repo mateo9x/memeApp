@@ -43,11 +43,17 @@ public class MemeServiceImpl implements MemeService {
                 .collect(Collectors.toList());
     }
 
-
     @Override
     public MemeDTO updateMeme(MemeDTO memeDTO) {
         Meme meme = memeMapper.toEntity(memeDTO);
         meme = memeRepository.save(meme);
         return memeMapper.toDTO(meme);
+    }
+
+    @Override
+    public MemeDTO getMemeById(Long memeId) {
+        return memeRepository.findById(memeId)
+                .map(memeMapper::toDTO)
+                .orElse(null);
     }
 }
