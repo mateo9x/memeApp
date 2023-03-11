@@ -1,0 +1,6 @@
+<div>
+  <span>{{meme.title}}</span>
+  <img alt="" [src]="meme.photoUrl">
+  <p (click)="displayUserMemes(meme.userId)">{{meme.userName}}</p>
+  <p>{{meme.upVotes}}</p>
+</div>

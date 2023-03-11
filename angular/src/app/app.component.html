@@ -1,18 +1,21 @@
 <header>
   <nav class="nav-bar">
     <div class="nav-left" routerLink="">
-      <span class="app-name">Memiczna strona</span>
+      <span class="app-name">MEME APP</span>
     </div>
     <div class="nav-right">
       <section class="navigations">
         <div class="navigation-div">
           <a routerLink="pending">Oczekujące</a>
+          <a routerLink="random">Wylosuj</a>
           <a routerLink="new-meme" *ngIf="userLogged">Dodaj mema</a>
         </div>
       </section>
       <section class="profile">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        <fa-icon icon="moon" (click)="changeTheme()"></fa-icon>
         <sign-in *ngIf="!userLogged"></sign-in>
-        <profile-nav *ngIf="userLogged" [profilePhotoUrl]="userLogged.photoUrl"></profile-nav>
+        <profile-nav *ngIf="userLogged" [user]="userLogged"></profile-nav>
       </section>
     </div>
   </nav>

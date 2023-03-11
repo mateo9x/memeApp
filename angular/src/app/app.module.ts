@@ -12,12 +12,13 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastModule} from "primeng/toast";
 import {MessageService} from "primeng/api";
 import {CheckboxModule} from "primeng/checkbox";
-import {MegaMenuModule} from "primeng/megamenu";
-import {MenubarModule} from "primeng/menubar";
 import {LogoutComponent} from "./component/authenticate/logout/logout.component";
 import {ProfileNavComponent} from "./component/profile/profile-nav/profile-nav.component";
-import {MemePendingListComponent} from "./component/meme/list/pending/meme-pending-list.component";
-import {MemeApprovedListComponent} from "./component/meme/list/approved/meme-approved-list.component";
+import {MemeListComponent} from "./component/meme/list/meme-list.component";
+import {IconModule} from "./module/icon.module";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {MemeComponent} from "./component/meme/meme.component";
+import {TooltipModule} from "primeng/tooltip";
 
 @NgModule({
   declarations: [
@@ -25,8 +26,8 @@ import {MemeApprovedListComponent} from "./component/meme/list/approved/meme-app
     SignInComponent,
     LogoutComponent,
     ProfileNavComponent,
-    MemeApprovedListComponent,
-    MemePendingListComponent
+    MemeListComponent,
+    MemeComponent
   ],
   imports: [
     BrowserModule,
@@ -40,11 +41,12 @@ import {MemeApprovedListComponent} from "./component/meme/list/approved/meme-app
     ButtonModule,
     ToastModule,
     CheckboxModule,
-    MegaMenuModule,
-    MenubarModule
+    IconModule,
+    FontAwesomeModule,
+    TooltipModule
   ],
   providers: [MessageService, { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,7 +1,11 @@
+@font-face {
+  font-family: fredokaOne;
+  src: url('./../assets/fonts/FredokaOne-Regular.ttf') format("opentype");
+}
+
 header {
-  font-size: 18px;
-  height: 40px;
-  background-color: var(--main-navbar-background-color);
+  height: 50px;
+  border-bottom: 1px solid var(--main-navbar-background-color);
 }
 
 .nav-bar {
@@ -27,8 +31,8 @@ header {
 }
 
 .app-name {
-  font-weight: bolder;
-  font-style: italic;
+  font-size: 24px;
+  font-family: fredokaOne, Roboto, serif;
 }
 
 .nav-right {
@@ -40,15 +44,11 @@ header {
   padding-right: 10px;
 }
 
-.nav-right > a:visited {
-  color: var(--main-text-color);
-}
-
 main {
   padding: 50px;
   text-align: center;
   width: 100%;
-  height: calc(100% - 40px);
+  height: calc(100% - 50px);
 }
 
 section {
@@ -57,15 +57,6 @@ section {
   align-items: center;
   justify-content: center;
   padding: 0 10px;
-}
-
-a {
-  color: var(--main-text-color);
-  text-decoration: none;
-}
-
-a:hover {
-  color: var(--main-text-color-hover);
 }
 
 .profile, .navigations {

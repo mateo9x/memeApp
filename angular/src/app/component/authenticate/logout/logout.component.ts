@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthenticateService} from "../../../services/authenticate.service";
+import {AuthenticateService} from "../../../service/authenticate.service";
 
 @Component({
   template: `

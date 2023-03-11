@@ -17,5 +17,5 @@ create table memes
 insert into memes (id, title, photo_url, date_created, date_approved, user_id, up_votes, approved)
 values (1, 'elo', '/assets/memes/1/meme1.jpg', '2023-10-01 00:00:00', '2023-10-01 00:00:00', 1, 0, true),
         (2, 'mem numer 2', '/assets/memes/1/meme2.jpg', '2023-10-02 00:00:00', '2023-10-02 00:00:00', 1, 0, true),
-        (3, 'mem numer 3', '/assets/memes/2/battle.jpg', '2023-10-04 00:00:00', '2023-10-04 00:00:00', 1, 0, true),
-        (4, 'mem numer 4', '/assets/memes/2/mem.jpg', '2023-10-10 00:00:00', null, 1, 0, false);
+        (3, 'mem numer 3', '/assets/memes/2/battle.jpg', '2023-10-04 00:00:00', '2023-10-04 00:00:00', 2, 0, true),
+        (4, 'mem numer 4', '/assets/memes/2/mem.jpg', '2023-10-10 00:00:00', null, 2, 0, false);

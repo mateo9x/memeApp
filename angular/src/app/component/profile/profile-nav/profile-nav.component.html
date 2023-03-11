@@ -1,1 +1,21 @@
-<p-menubar [model]="profileOptions"></p-menubar>
+<img [src]="user.photoUrl ? user.photoUrl : defaultPhotoUrl" alt="" [pTooltip]="user.username" tooltipPosition="bottom" (click)="toggleExpanded()">
+
+<ng-container *ngIf="expanded">
+  <div class="profile-nav-expanded">
+    <div>
+      <a routerLink="logout">
+        <fa-icon icon="gear"/>
+        Ustawienia</a>
+    </div>
+    <div>
+      <a [routerLink]="'user/' + user.id">
+        <fa-icon icon="meteor"/>
+        Twoje memy</a>
+    </div>
+    <div>
+      <a routerLink="logout">
+        <fa-icon icon="sign-out"/>
+        Wyloguj się</a>
+    </div>
+  </div>
+</ng-container>

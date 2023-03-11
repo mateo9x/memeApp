@@ -1,4 +1,3 @@
 <ng-container *ngFor="let meme of memeList">
-  <div> Memuś </div>
-  <img alt="" [src]="meme.photoUrl">
+  <meme [meme]="meme"></meme>
 </ng-container>

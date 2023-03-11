@@ -1,0 +1,9 @@
+img {
+  width: 600px;
+  height: 600px;
+}
+
+p:hover {
+  cursor: pointer;
+  color: var(--main-text-color-hover);
+}

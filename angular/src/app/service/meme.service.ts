@@ -22,4 +22,8 @@ export class MemeService {
     return this.http.get<Meme[]>(`${this.MEME_URL}/pending`);
   }
 
+  public getMemesForUser(userId: number): Observable<Meme[]> {
+    return this.http.get<Meme[]>(`${this.MEME_URL}/user/${userId}`);
+  }
+
 }

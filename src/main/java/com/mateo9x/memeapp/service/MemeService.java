@@ -10,5 +10,7 @@ public interface MemeService {
 
     List<MemeDTO> getPendingMemes();
 
+    List<MemeDTO> getMemesForUser(Long userId);
+
     MemeDTO upVoteMem(MemeDTO memeDTO);
 }

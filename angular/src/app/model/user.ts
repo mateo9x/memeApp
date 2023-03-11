@@ -3,4 +3,5 @@ export class User {
   username: string;
   email: string;
   photoUrl: string;
+  resetToken: string;
 }

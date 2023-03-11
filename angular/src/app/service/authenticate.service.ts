@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {APP_BASE_URL} from "../app.service";
 import {AuthenticateRequest} from "../model/authenticate-request";
-import {ToastService} from "./toast.services";
+import {ToastService} from "./toast/toast.services";
 import {UserService} from "./user.service";
 import {Router} from "@angular/router";
 

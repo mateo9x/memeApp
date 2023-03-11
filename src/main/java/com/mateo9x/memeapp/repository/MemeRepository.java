@@ -10,4 +10,8 @@ import java.util.List;
 public interface MemeRepository extends JpaRepository<Meme, Long> {
 
     List<Meme> findAllByApprovedIsTrue();
+
+    List<Meme> findAllByApprovedIsFalseOrApprovedIsNull();
+
+    List<Meme> findAllByUserId(Long userId);
 }

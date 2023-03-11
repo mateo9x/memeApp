@@ -31,12 +31,20 @@ public class MemeServiceImpl implements MemeService {
 
     @Override
     public List<MemeDTO> getPendingMemes() {
-        return memeRepository.findAll().stream()
+        return memeRepository.findAllByApprovedIsFalseOrApprovedIsNull().stream()
                 .map(memeMapper::toDTO)
-                .filter(meme -> !meme.getApproved())
                 .sorted(Comparator.comparing(MemeDTO::getDateCreated).reversed())
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<MemeDTO> getMemesForUser(Long userId) {
+        return memeRepository.findAllByUserId(userId).stream()
+                .map(memeMapper::toDTO)
+                .sorted(Comparator.comparing(MemeDTO::getDateCreated).reversed())
+                .collect(Collectors.toList());
+    }
+
 
     @Override
     public MemeDTO upVoteMem(MemeDTO memeDTO) {

@@ -1,22 +1,27 @@
-::ng-deep {
-  .p-menubar {
-    padding: 0;
-    border: none;
-    background: none;
-  }
-  .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link {
-    border: none;
-    background: none;
-  }
-  .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link .p-menuitem-text,
-  .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover .p-menuitem-text,
-  .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link .p-submenu-icon,
-  .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover .p-submenu-icon {
-    color: var(--main-text-color);
-  }
+img {
+  height: 36px;
+  width: 36px;
+  border-radius: 50px;
+  margin: 0 10px;
 }
 
-img {
-  max-height: 40px;
+img:hover {
+  cursor: pointer;
+}
+
+.profile-nav-expanded {
+  width: auto;
   height: auto;
+  max-height: 25%;
+  position: fixed;
+  top: 50px;
+  right: 1%;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  background-color: var(--main-background-color);
+  padding: 10px;
+  -webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.3);
+  text-align: left;
+  z-index: 1000;
+  overflow: auto;
 }
