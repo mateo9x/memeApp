@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @Service
@@ -43,6 +44,13 @@ public class MemeServiceImpl implements MemeService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<MemeDTO> getMemesByTag(String tag) {
+        return memeRepository.findAllByTagsContaining(tag).stream()
+                .map(memeMapper::toDTO)
+                .sorted(Comparator.comparing(MemeDTO::getDateCreated).reversed())
+                .collect(Collectors.toList());
+    }
 
     @Override
     public MemeDTO updateMeme(MemeDTO memeDTO) {
@@ -50,4 +58,22 @@ public class MemeServiceImpl implements MemeService {
         meme = memeRepository.save(meme);
         return memeMapper.toDTO(meme);
     }
+
+    @Override
+    public MemeDTO getMemeById(Long memeId) {
+        return memeRepository.findById(memeId)
+                .map(memeMapper::toDTO)
+                .orElse(null);
+    }
+
+    @Override
+    public MemeDTO getRandomMeme() {
+        Long maxId = memeRepository.findMaxIdFromMeme();
+        Random random = new Random();
+        long userId = random.nextLong(1, maxId + 1);
+        return memeRepository.findById(userId)
+                .map(memeMapper::toDTO)
+                .orElse(null);
+    }
+
 }

@@ -8,7 +8,6 @@ import {environment} from "../environments/environment";
 export class AppService {
 
   constructor(private http: HttpClient) {
-    console.log(APP_BASE_URL)
     http.head(APP_BASE_URL, { responseType: 'text' });
   }
 

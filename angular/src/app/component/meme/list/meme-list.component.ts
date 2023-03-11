@@ -29,8 +29,14 @@ export class MemeListComponent implements OnInit {
           if (pendingMemes) {
             this.getPendingMemes();
           } else {
-            const userId = JSON.parse(urlSegments[urlSegments.length - 1].path);
-            this.getMemesForUser(userId);
+            const userMemes = urlSegments.find(urlSegment => urlSegment.path === 'user');
+            if (userMemes) {
+              const userId = JSON.parse(urlSegments[urlSegments.length - 1].path);
+              this.getMemesForUser(userId);
+            } else {
+              const tag = urlSegments[urlSegments.length - 1].path;
+              this.getMemesByTag(tag);
+            }
           }
         }
       }
@@ -63,6 +69,14 @@ export class MemeListComponent implements OnInit {
 
   getMemesForUser(userId: number) {
     this.memeService.getMemesForUser(userId).subscribe({
+      next: (response) => {
+        this.memeList = response;
+      }
+    });
+  }
+
+  getMemesByTag(tag: string) {
+    this.memeService.getMemesByTag(tag).subscribe({
       next: (response) => {
         this.memeList = response;
       }

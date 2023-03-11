@@ -23,6 +23,18 @@ public class MemeController {
 
     private final MemeService memeService;
 
+    @GetMapping("/memes/{memeId}")
+    public ResponseEntity<MemeDTO> getMemeById(@PathVariable Long memeId) {
+        log.info("REST request to get meme by id: {}", memeId);
+        return ResponseEntity.ok(memeService.getMemeById(memeId));
+    }
+
+    @GetMapping("/memes/random")
+    public ResponseEntity<MemeDTO> getRandomMeme() {
+        log.info("REST request to get random meme");
+        return ResponseEntity.ok(memeService.getRandomMeme());
+    }
+
     @GetMapping("/memes/approved")
     public ResponseEntity<List<MemeDTO>> getApprovedMemes() {
         log.info("REST request to get all approved memes");
@@ -39,6 +51,12 @@ public class MemeController {
     public ResponseEntity<List<MemeDTO>> getMemesForUser(@PathVariable Long userId) {
         log.info("REST request to get all memes for user: {}", userId);
         return ResponseEntity.ok(memeService.getMemesForUser(userId));
+    }
+
+    @GetMapping("/memes/tag/{tag}")
+    public ResponseEntity<List<MemeDTO>> getMemesByTag(@PathVariable String tag) {
+        log.info("REST request to get all memes by tag: {}", tag);
+        return ResponseEntity.ok(memeService.getMemesByTag(tag));
     }
 
     @PutMapping("/memes")

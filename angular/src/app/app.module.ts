@@ -19,6 +19,7 @@ import {IconModule} from "./module/icon.module";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {MemeComponent} from "./component/meme/meme.component";
 import {TooltipModule} from "primeng/tooltip";
+import {MemeDetailComponent} from "./component/meme/detail/meme-detail.component";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {TooltipModule} from "primeng/tooltip";
     LogoutComponent,
     ProfileNavComponent,
     MemeListComponent,
-    MemeComponent
+    MemeComponent,
+    MemeDetailComponent
   ],
   imports: [
     BrowserModule,

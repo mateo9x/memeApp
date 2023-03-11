@@ -59,6 +59,7 @@
 .meme-tag {
   margin: 5px;
   padding: 5px;
+  color: var(--main-tag-color);
   background-color: var(--main-meme-button-color);
   border-radius: 10px;
 }
@@ -71,7 +72,11 @@
 .p-button {
   margin-top: 5px !important;
   margin-right: 10px !important;
-  padding: 5px !important;
+  padding: 5px 10px !important;
+}
+
+fa-icon {
+  padding: 0 5px;
 }
 
 fa-icon:hover {

@@ -12,5 +12,11 @@ public interface MemeService {
 
     List<MemeDTO> getMemesForUser(Long userId);
 
+    List<MemeDTO> getMemesByTag(String tag);
+
     MemeDTO updateMeme(MemeDTO memeDTO);
+
+    MemeDTO getMemeById(Long memeId);
+
+    MemeDTO getRandomMeme();
 }

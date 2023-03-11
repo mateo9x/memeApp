@@ -14,6 +14,14 @@ export class MemeService {
   constructor(private http: HttpClient) {
   }
 
+  public getMemeById(id: number): Observable<Meme> {
+    return this.http.get<Meme>(`${this.MEME_URL}/${id}`);
+  }
+
+  public getRandomMeme(): Observable<Meme> {
+    return this.http.get<Meme>(`${this.MEME_URL}/random`);
+  }
+
   public getApprovedMemes(): Observable<Meme[]> {
     return this.http.get<Meme[]>(`${this.MEME_URL}/approved`);
   }
@@ -24,6 +32,10 @@ export class MemeService {
 
   public getMemesForUser(userId: number): Observable<Meme[]> {
     return this.http.get<Meme[]>(`${this.MEME_URL}/user/${userId}`);
+  }
+
+  public getMemesByTag(tag: string): Observable<Meme[]> {
+    return this.http.get<Meme[]>(`${this.MEME_URL}/tag/${tag}`);
   }
 
   public updateMeme(meme: Meme): Observable<Meme> {
