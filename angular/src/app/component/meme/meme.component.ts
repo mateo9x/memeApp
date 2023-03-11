@@ -48,4 +48,11 @@ export class MemeComponent {
     return [];
   }
 
+  getUserAvatar() {
+    if (this.meme && this.meme.userPhotoUrl) {
+      return this.meme.userPhotoUrl;
+    }
+    return this.defaultUserUrl;
+  }
+
 }

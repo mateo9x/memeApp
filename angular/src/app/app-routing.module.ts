@@ -8,6 +8,7 @@ const routes: Routes = [
   {path: '', component: MemeListComponent, title: 'Główna'},
   {path: 'pending', component: MemeListComponent, title: 'Oczekujące'},
   {path: 'user/:id', component: MemeListComponent, title: 'Memy użytkownika'},
+  {path: 'tags/:id', component: MemeListComponent, title: 'Memy po tagu'},
   {path: 'meme/:id', component: MemeDetailComponent, title: 'Szczegóły mema'},
   {path: 'logout', component: LogoutComponent, title: 'Wyloguj się'}
 ];

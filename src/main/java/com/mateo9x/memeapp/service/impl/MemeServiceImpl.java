@@ -44,6 +44,14 @@ public class MemeServiceImpl implements MemeService {
     }
 
     @Override
+    public List<MemeDTO> getMemesByTag(String tag) {
+        return memeRepository.findAllByTagsContaining(tag).stream()
+                .map(memeMapper::toDTO)
+                .sorted(Comparator.comparing(MemeDTO::getDateCreated).reversed())
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public MemeDTO updateMeme(MemeDTO memeDTO) {
         Meme meme = memeMapper.toEntity(memeDTO);
         meme = memeRepository.save(meme);

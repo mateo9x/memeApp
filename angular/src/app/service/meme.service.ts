@@ -30,6 +30,10 @@ export class MemeService {
     return this.http.get<Meme[]>(`${this.MEME_URL}/user/${userId}`);
   }
 
+  public getMemesByTag(tag: string): Observable<Meme[]> {
+    return this.http.get<Meme[]>(`${this.MEME_URL}/tag/${tag}`);
+  }
+
   public updateMeme(meme: Meme): Observable<Meme> {
     return this.http.put<Meme>(`${this.MEME_URL}`, meme);
   }

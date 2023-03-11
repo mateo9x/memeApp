@@ -47,6 +47,12 @@ public class MemeController {
         return ResponseEntity.ok(memeService.getMemesForUser(userId));
     }
 
+    @GetMapping("/memes/tag/{tag}")
+    public ResponseEntity<List<MemeDTO>> getMemesByTag(@PathVariable String tag) {
+        log.info("REST request to get all memes by tag: {}", tag);
+        return ResponseEntity.ok(memeService.getMemesByTag(tag));
+    }
+
     @PutMapping("/memes")
     public ResponseEntity<MemeDTO> updateMeme(@RequestBody @Valid MemeDTO memeDTO) {
         log.info("REST request to update mem: {}", memeDTO);

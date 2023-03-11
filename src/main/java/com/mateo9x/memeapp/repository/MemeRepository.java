@@ -14,4 +14,6 @@ public interface MemeRepository extends JpaRepository<Meme, Long> {
     List<Meme> findAllByApprovedIsFalseOrApprovedIsNull();
 
     List<Meme> findAllByUserId(Long userId);
+
+    List<Meme> findAllByTagsContaining(String tag);
 }
