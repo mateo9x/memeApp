@@ -21,7 +21,7 @@ export class AppInterceptor implements HttpInterceptor {
       });
       return next.handle(newRequest).pipe(catchError((err, caught) => {
         if (err.status === 401 || err.status === 403 || err.status === 500) {
-          this.authenticateService.logoutUser();
+          this.authenticateService.logoutUser(true);
         }
         throw err;
       }));

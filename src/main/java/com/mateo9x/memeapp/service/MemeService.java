@@ -12,5 +12,5 @@ public interface MemeService {
 
     List<MemeDTO> getMemesForUser(Long userId);
 
-    MemeDTO upVoteMem(MemeDTO memeDTO);
+    MemeDTO updateMeme(MemeDTO memeDTO);
 }

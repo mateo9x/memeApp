@@ -37,13 +37,17 @@ export class AuthenticateService {
     });
   }
 
-  public logoutUser() {
+  public logoutUser(errorLoggedOut?: boolean) {
     this.http.post<any>(`${APP_BASE_URL}/logout`, {}).subscribe({
       next: () => {
         localStorage.removeItem('token');
         this.userService.userLogged.next(null);
         this.router.navigate(['']).then(() => {
-          this.toastService.createSuccessToast('Wylogowano pomyślnie');
+          if (errorLoggedOut) {
+            window.location.reload();
+          } else {
+            this.toastService.createSuccessToast('Wylogowano pomyślnie');
+          }
         });
       },
       error: () => {

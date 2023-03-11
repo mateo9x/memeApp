@@ -6,7 +6,9 @@ export class Meme {
   dateApproved?: Date;
   userId: number;
   userName: string;
+  userPhotoUrl: string;
   upVotes: number;
+  downVotes: number;
   approved?: boolean;
-  tags?: string[];
+  tags?: string;
 }

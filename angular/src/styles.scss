@@ -6,6 +6,8 @@
   --main-scrollbar-color: #dad6d6;
   --main-button-color: #da5413;
   --main-button-color-hover: #b2420c;
+  --main-meme-button-color: #e5e4e4;
+  --main-meme-button-color-hover: #b9b9b9;
 }
 
 @font-face {
@@ -50,16 +52,14 @@ fa-icon:hover {
   border-radius: 10px;
 }
 
-.p-button {
-  margin: 10px !important;
-  padding: 15px !important;
-}
 .p-button, .p-button[disabled] {
+  box-shadow: none !important;
   background: var(--main-button-color) !important;
   border: var(--main-button-color) !important;
 }
 
 .p-button:hover {
+  box-shadow: none !important;
   background: var(--main-button-color-hover) !important;
   border: var(--main-button-color-hover) !important;
 }

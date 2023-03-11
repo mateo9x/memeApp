@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Meme} from "../../../model/meme";
 import {MemeService} from "../../../service/meme.service";
 import {ActivatedRoute} from "@angular/router";
+import {User} from "../../../model/user";
+import {UserService} from "../../../service/user.service";
 
 @Component({
   selector: '',
@@ -11,13 +13,15 @@ import {ActivatedRoute} from "@angular/router";
 export class MemeListComponent implements OnInit {
 
   memeList: Meme[] = [];
+  userLogged: User;
 
-  constructor(private memeService: MemeService, private activatedRoute: ActivatedRoute) {
+  constructor(private memeService: MemeService, private activatedRoute: ActivatedRoute, private userService: UserService) {
   }
 
   ngOnInit() {
     this.activatedRoute.url.subscribe({
       next: (urlSegments) => {
+        this.getUserLogged();
         if (urlSegments.length === 0) {
           this.getApprovedMemes();
         } else {
@@ -25,10 +29,18 @@ export class MemeListComponent implements OnInit {
           if (pendingMemes) {
             this.getPendingMemes();
           } else {
-            const userId = JSON.parse(urlSegments[urlSegments.length-1].path);
+            const userId = JSON.parse(urlSegments[urlSegments.length - 1].path);
             this.getMemesForUser(userId);
           }
         }
+      }
+    });
+  }
+
+  getUserLogged() {
+    this.userService.userLogged.subscribe({
+      next: (response) => {
+        this.userLogged = response;
       }
     });
   }

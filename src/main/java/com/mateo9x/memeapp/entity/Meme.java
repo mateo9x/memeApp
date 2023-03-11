@@ -1,7 +1,6 @@
 package com.mateo9x.memeapp.entity;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,7 +13,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Data
@@ -39,9 +37,10 @@ public class Meme {
     private User user;
     @Column(name = "up_votes")
     private Integer upVotes;
+    @Column(name = "down_votes")
+    private Integer downVotes;
     @Column
     private Boolean approved;
     @Column
-    @ElementCollection
-    private List<String> tags;
+    private String tags;
 }
