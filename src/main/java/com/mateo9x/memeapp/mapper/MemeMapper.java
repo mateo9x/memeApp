@@ -10,6 +10,7 @@ public interface MemeMapper {
 
     @Mapping(source = "user.id", target = "userId")
     @Mapping(source = "user.username", target = "userName")
+    @Mapping(source = "user.photoUrl", target = "userPhotoUrl")
     MemeDTO toDTO(Meme meme);
 
     @Mapping(source = "userId", target = "user")

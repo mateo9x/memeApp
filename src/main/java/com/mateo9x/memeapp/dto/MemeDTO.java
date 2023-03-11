@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -19,8 +18,10 @@ public class MemeDTO {
     private LocalDateTime dateApproved;
     private Long userId;
     private String userName;
+    private String userPhotoUrl;
     private Integer upVotes;
+    private Integer downVotes;
     private Boolean approved;
-    private List<String> tags;
+    private String tags;
 }
 

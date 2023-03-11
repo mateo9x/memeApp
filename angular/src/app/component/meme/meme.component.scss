@@ -1,9 +1,79 @@
-img {
+.meme-container {
+  display: grid;
+  justify-content: center;
+  padding: 30px;
+}
+
+.user-img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50px;
+  margin: 0 10px;
+}
+
+.meme-author {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.meme-author > span.username:hover {
+  cursor: pointer;
+  color: var(--main-text-color-hover);
+}
+
+.meme-time {
+  color: var(--main-meme-button-color-hover);
+  padding: 0 10px;
+}
+
+.meme-title {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 0;
+}
+
+.meme-title:hover {
+  cursor: pointer;
+  color: var(--main-text-color-hover);
+}
+
+.meme-img {
   width: 600px;
   height: 600px;
 }
 
-p:hover {
+.meme-img:hover {
   cursor: pointer;
-  color: var(--main-text-color-hover);
+}
+
+.meme-buttons, .meme-tags {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.meme-tag {
+  margin: 5px;
+  padding: 5px;
+  background-color: var(--main-meme-button-color);
+  border-radius: 10px;
+}
+
+.meme-tag:hover {
+  cursor: pointer;
+  background-color: var(--main-meme-button-color-hover);
+}
+
+.p-button {
+  margin-top: 5px !important;
+  margin-right: 10px !important;
+  padding: 5px !important;
+}
+
+fa-icon:hover {
+  color: var(--main-background-color);
 }

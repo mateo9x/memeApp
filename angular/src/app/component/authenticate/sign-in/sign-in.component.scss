@@ -25,7 +25,7 @@ a:hover {
   width: 20%;
   height: auto;
   max-height: 30%;
-  position: fixed;
+  position: absolute;
   top: 50px;
   right: 1%;
   -webkit-border-radius: 10px 10px 10px 10px;
@@ -36,4 +36,9 @@ a:hover {
   text-align: center;
   z-index: 1000;
   overflow: auto;
+}
+
+.p-button {
+  margin: 10px !important;
+  padding: 15px !important;
 }

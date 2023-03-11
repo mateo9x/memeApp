@@ -26,4 +26,8 @@ export class MemeService {
     return this.http.get<Meme[]>(`${this.MEME_URL}/user/${userId}`);
   }
 
+  public updateMeme(meme: Meme): Observable<Meme> {
+    return this.http.put<Meme>(`${this.MEME_URL}`, meme);
+  }
+
 }

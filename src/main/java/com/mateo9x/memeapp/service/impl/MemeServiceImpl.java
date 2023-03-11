@@ -8,7 +8,6 @@ import com.mateo9x.memeapp.service.MemeService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,7 +16,6 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class MemeServiceImpl implements MemeService {
 
-    private static final Integer MIN_UP_VOTES_TO_BE_APPROVED_MEME = 100;
     private final MemeRepository memeRepository;
     private final MemeMapper memeMapper;
 
@@ -47,11 +45,7 @@ public class MemeServiceImpl implements MemeService {
 
 
     @Override
-    public MemeDTO upVoteMem(MemeDTO memeDTO) {
-        if (!Boolean.TRUE.equals(memeDTO.getApproved()) && memeDTO.getUpVotes() >= MIN_UP_VOTES_TO_BE_APPROVED_MEME) {
-            memeDTO.setDateApproved(LocalDateTime.now());
-            memeDTO.setApproved(true);
-        }
+    public MemeDTO updateMeme(MemeDTO memeDTO) {
         Meme meme = memeMapper.toEntity(memeDTO);
         meme = memeRepository.save(meme);
         return memeMapper.toDTO(meme);

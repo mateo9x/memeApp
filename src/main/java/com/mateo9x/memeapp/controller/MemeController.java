@@ -41,9 +41,9 @@ public class MemeController {
         return ResponseEntity.ok(memeService.getMemesForUser(userId));
     }
 
-    @PutMapping("/memes/up-vote")
-    public ResponseEntity<MemeDTO> upVoteMem(@RequestBody @Valid MemeDTO memeDTO) {
-        log.info("REST request to upvote mem: {}", memeDTO);
-        return ResponseEntity.ok(memeService.upVoteMem(memeDTO));
+    @PutMapping("/memes")
+    public ResponseEntity<MemeDTO> updateMeme(@RequestBody @Valid MemeDTO memeDTO) {
+        log.info("REST request to update mem: {}", memeDTO);
+        return ResponseEntity.ok(memeService.updateMeme(memeDTO));
     }
 }

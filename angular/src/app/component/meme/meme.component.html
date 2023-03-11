@@ -1,6 +1,21 @@
-<div>
-  <span>{{meme.title}}</span>
-  <img alt="" [src]="meme.photoUrl">
-  <p (click)="displayUserMemes(meme.userId)">{{meme.userName}}</p>
-  <p>{{meme.upVotes}}</p>
+<div class="meme-container">
+  <div class="meme-author"><img class="user-img" [src]="meme.userPhotoUrl ? meme.userPhotoUrl : defaultUserUrl" alt=""/>
+    <span class="username" (click)="displayUserMemes(meme.userId)">{{meme.userName}}</span>
+    <span class="meme-time">{{calcTimeSinceMemCreated()}}</span>
+  </div>
+  <span class="meme-title">{{meme.title}}</span>
+  <img class="meme-img" alt="" [src]="meme.photoUrl">
+  <div class="meme-tags">
+    <ng-container *ngFor="let tag of getMemeTags()">
+      <div class="meme-tag">{{tag}}</div>
+    </ng-container>
+  </div>
+  <div class="meme-buttons">
+    <button pButton type="button" [disabled]="!user" (click)="updateMemeUpVote()">
+      <fa-icon icon="arrow-up"/>
+      {{meme.upVotes}}</button>
+    <button pButton type="button" [disabled]="!user" (click)="updateMemeDownVote()">
+      <fa-icon icon="arrow-down"/>
+      {{meme.downVotes}}</button>
+  </div>
 </div>
