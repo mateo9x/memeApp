@@ -21,9 +21,21 @@ export class MemeDetailComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.url.subscribe({
       next: (urlSegment) => {
-        const memeId = urlSegment[urlSegment.length - 1].path;
-        this.getMeme(memeId);
+        if (urlSegment.length === 1) {
+          this.getRandomMeme();
+        } else {
+          const memeId = urlSegment[urlSegment.length - 1].path;
+          this.getMeme(memeId);
+        }
         this.getUserLogged();
+      }
+    });
+  }
+
+  getRandomMeme() {
+    this.memeService.getRandomMeme().subscribe({
+      next: (response) => {
+        this.meme = response;
       }
     });
   }

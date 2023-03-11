@@ -18,6 +18,10 @@ export class MemeService {
     return this.http.get<Meme>(`${this.MEME_URL}/${id}`);
   }
 
+  public getRandomMeme(): Observable<Meme> {
+    return this.http.get<Meme>(`${this.MEME_URL}/random`);
+  }
+
   public getApprovedMemes(): Observable<Meme[]> {
     return this.http.get<Meme[]>(`${this.MEME_URL}/approved`);
   }

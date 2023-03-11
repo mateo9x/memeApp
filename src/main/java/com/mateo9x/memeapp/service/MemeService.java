@@ -17,4 +17,6 @@ public interface MemeService {
     MemeDTO updateMeme(MemeDTO memeDTO);
 
     MemeDTO getMemeById(Long memeId);
+
+    MemeDTO getRandomMeme();
 }

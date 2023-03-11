@@ -29,6 +29,12 @@ public class MemeController {
         return ResponseEntity.ok(memeService.getMemeById(memeId));
     }
 
+    @GetMapping("/memes/random")
+    public ResponseEntity<MemeDTO> getRandomMeme() {
+        log.info("REST request to get random meme");
+        return ResponseEntity.ok(memeService.getRandomMeme());
+    }
+
     @GetMapping("/memes/approved")
     public ResponseEntity<List<MemeDTO>> getApprovedMemes() {
         log.info("REST request to get all approved memes");

@@ -10,6 +10,7 @@ const routes: Routes = [
   {path: 'user/:id', component: MemeListComponent, title: 'Memy użytkownika'},
   {path: 'tags/:id', component: MemeListComponent, title: 'Memy po tagu'},
   {path: 'meme/:id', component: MemeDetailComponent, title: 'Szczegóły mema'},
+  {path: 'meme/random', component: MemeDetailComponent, title: 'Losowy memy'},
   {path: 'logout', component: LogoutComponent, title: 'Wyloguj się'}
 ];
 

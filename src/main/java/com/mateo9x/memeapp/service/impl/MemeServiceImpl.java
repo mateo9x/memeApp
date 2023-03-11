@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @Service
@@ -64,4 +65,15 @@ public class MemeServiceImpl implements MemeService {
                 .map(memeMapper::toDTO)
                 .orElse(null);
     }
+
+    @Override
+    public MemeDTO getRandomMeme() {
+        Long maxId = memeRepository.findMaxIdFromMeme();
+        Random random = new Random();
+        long userId = random.nextLong(1, maxId + 1);
+        return memeRepository.findById(userId)
+                .map(memeMapper::toDTO)
+                .orElse(null);
+    }
+
 }
