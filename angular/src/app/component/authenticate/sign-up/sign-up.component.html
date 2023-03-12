@@ -1,0 +1,33 @@
+<h3> Rejestracja użytkownika </h3>
+
+<form [formGroup]="form" novalidate>
+  <div class="input">
+    <input pInputText type="text" formControlName="username" placeholder="Login" (focusout)="checkIfUserWithUsernameExists()"/>
+    <span class="span-error" *ngIf="username?.errors?.['userExists']">{{this.username?.getError('userExists')}}</span>
+  </div>
+
+  <div class="input">
+    <input pInputText type="text" formControlName="email" placeholder="E-mail" (focusout)="checkIfUserWithEmailExists()"/>
+    <span class="span-error" *ngIf="email?.errors?.email">Nie prawidłowy format adresu e-mail, przykładowo: mail@mail.pl</span>
+    <span class="span-error" *ngIf="email?.errors?.['emailExists']">{{this.email?.getError('emailExists')}}</span>
+  </div>
+
+  <div class="input">
+    <input pInputText type="password" formControlName="password" placeholder="Hasło"/>
+    <span class="span-error" *ngIf="password?.errors?.minlength">Hasło musi mieć minimum 5 znaków!</span>
+  </div>
+
+  <div class="input">
+    <input pInputText type="password" formControlName="password2" placeholder="Potwierdź hasło"/>
+    <span class="span-error" *ngIf="!doesBothPasswordMatches()">Hasła muszą być takie same!</span>
+  </div>
+
+  <div class="button-container">
+    <button pButton type="button" class="p-button-raised p-button-rounded" (click)="clearForm()">Wyczyść
+    </button>
+
+    <button pButton type="button" class="p-button-raised p-button-rounded" (click)="signUp()"
+            [disabled]="!isFormValid() || !doesBothPasswordMatches()">Zarejestruj się
+    </button>
+  </div>
+</form>

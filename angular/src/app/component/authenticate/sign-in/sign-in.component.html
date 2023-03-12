@@ -3,15 +3,25 @@
 <ng-container *ngIf="expanded">
   <form [formGroup]="form" novalidate class="sign-in-expanded">
     <div>
-      <input pInputText type="text" formControlName="username" placeholder="Użytkownik" (keyup.enter)="signInIfFormValid()"/>
+      <input pInputText type="text" formControlName="username" placeholder="Użytkownik"
+             (keyup.enter)="signInIfFormValid()"/>
     </div>
 
     <div>
-      <input pInputText type="password" formControlName="password" placeholder="Hasło" (keyup.enter)="signInIfFormValid()"/>
+      <input pInputText type="password" formControlName="password" placeholder="Hasło"
+             (keyup.enter)="signInIfFormValid()"/>
     </div>
 
     <div>
       <p-checkbox formControlName="rememberMe" [binary]="true" label="Zapamiętaj mnie"></p-checkbox>
+    </div>
+
+    <div>
+      <a routerLink="sign-up">Zarejestruj się</a>
+    </div>
+
+    <div>
+      <a routerLink="forgot-password">Nie pamiętasz hasła?</a>
     </div>
 
     <button pButton type="button" class="p-button-raised p-button-rounded" (click)="signIn()"

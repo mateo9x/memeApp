@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,4 +40,17 @@ public class UserController {
         log.info("REST request to get user logged");
         return ResponseEntity.ok(userService.getUserLogged());
     }
+
+    @GetMapping("/users/email/{email}")
+    public ResponseEntity<UserDTO> getUserByEmail(@PathVariable String email) {
+        log.info("REST request to get user by email: {}", email);
+        return ResponseEntity.ok(userService.getUserByEmail(email).orElse(null));
+    }
+
+    @GetMapping("/users/username/{username}")
+    public ResponseEntity<UserDTO> getUserByUsername(@PathVariable String username) {
+        log.info("REST request to get user by username: {}", username);
+        return ResponseEntity.ok(userService.getUserByUsername(username).orElse(null));
+    }
+
 }

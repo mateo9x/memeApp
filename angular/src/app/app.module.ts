@@ -20,6 +20,7 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {MemeComponent} from "./component/meme/meme.component";
 import {TooltipModule} from "primeng/tooltip";
 import {MemeDetailComponent} from "./component/meme/detail/meme-detail.component";
+import {SignUpComponent} from "./component/authenticate/sign-up/sign-up.component";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {MemeDetailComponent} from "./component/meme/detail/meme-detail.component
     ProfileNavComponent,
     MemeListComponent,
     MemeComponent,
-    MemeDetailComponent
+    MemeDetailComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

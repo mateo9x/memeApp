@@ -19,4 +19,16 @@ export class UserService {
     return this.http.get<User>(`${this.USERS_URL}/user-logged`);
   }
 
+  public saveUser(user: User): Observable<User> {
+    return this.http.post<User>(this.USERS_URL, user);
+  }
+
+  public getUserByUsername(username: string): Observable<User> {
+    return this.http.get<User>(`${this.USERS_URL}/username/${username}`);
+  }
+
+  public getUserByEmail(email: string): Observable<User> {
+    return this.http.get<User>(`${this.USERS_URL}/email/${email}`);
+  }
+
 }
