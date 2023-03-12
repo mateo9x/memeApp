@@ -8,16 +8,17 @@ Meme app - made as an opportunity to browse daily memes uploaded by users.
 - Display random meme
 - Display detail view of meme
 - Dark mode
+- Forgot password
 
 ## TODO functionalities
-- Forgot password
 - Add new meme
 - User profile update
-- Gif / Movies
+- Movies
 - Meme comments
 - User authorities and provide permissions for some actions
 
 ## How to run
+- Replace placholders in `application.properties` (Required for reset password functionality)
 - Run spring-boot app
 - Type `npm install` in `angular` directory
 - Type `npm start` in `angular` directory
