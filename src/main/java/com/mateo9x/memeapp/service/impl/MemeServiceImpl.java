@@ -76,4 +76,10 @@ public class MemeServiceImpl implements MemeService {
                 .orElse(null);
     }
 
+    @Override
+    public MemeDTO createMeme(MemeDTO memeDTO) {
+        Meme meme = memeMapper.toEntity(memeDTO);
+        meme = memeRepository.save(meme);
+        return memeMapper.toDTO(meme);
+    }
 }

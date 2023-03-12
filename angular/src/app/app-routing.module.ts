@@ -8,6 +8,8 @@ import {ForgotPasswordComponent} from "./component/authenticate/forgot-password/
 import {NewPasswordComponent} from "./component/authenticate/new-password/new-password.component";
 import {LoginGuard} from "./config/login-guard";
 import {AnonymousGuard} from "./config/anonymous-guard";
+import {PageNotFoundComponent} from "./handler/page-not-found/page-not-found.component";
+import {NewMemeComponent} from "./component/meme/new-meme/new-meme.component";
 
 const routes: Routes = [
   {path: '', component: MemeListComponent, title: 'Główna'},
@@ -19,7 +21,9 @@ const routes: Routes = [
   {path: 'logout', component: LogoutComponent, title: 'Wyloguj się', canActivate: [LoginGuard]},
   {path: 'sign-up', component: SignUpComponent, title: 'Zarejestruj się', canActivate: [AnonymousGuard]},
   {path: 'forgot-password', component: ForgotPasswordComponent, title: 'Odzyskiwanie hasła', canActivate: [AnonymousGuard]},
-  {path: 'new-password', component: NewPasswordComponent, title: 'Potwierdź nowe hasła', canActivate: [AnonymousGuard]}
+  {path: 'new-password', component: NewPasswordComponent, title: 'Potwierdź nowe hasła', canActivate: [AnonymousGuard]},
+  {path: 'new-meme', component: NewMemeComponent, title: 'Dodaj mema', canActivate: [LoginGuard]},
+  {path: '**', component: PageNotFoundComponent, title: 'Strona nie znaleziona'}
 ];
 
 @NgModule({

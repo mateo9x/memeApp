@@ -25,6 +25,9 @@ import {ForgotPasswordComponent} from "./component/authenticate/forgot-password/
 import {NewPasswordComponent} from "./component/authenticate/new-password/new-password.component";
 import {AnonymousGuard} from "./config/anonymous-guard";
 import {LoginGuard} from "./config/login-guard";
+import {PageNotFoundComponent} from "./handler/page-not-found/page-not-found.component";
+import {NewMemeComponent} from "./component/meme/new-meme/new-meme.component";
+import {FileUploadModule} from "primeng/fileupload";
 
 @NgModule({
   declarations: [
@@ -37,7 +40,9 @@ import {LoginGuard} from "./config/login-guard";
     MemeDetailComponent,
     SignUpComponent,
     ForgotPasswordComponent,
-    NewPasswordComponent
+    NewPasswordComponent,
+    PageNotFoundComponent,
+    NewMemeComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +58,8 @@ import {LoginGuard} from "./config/login-guard";
     CheckboxModule,
     IconModule,
     FontAwesomeModule,
-    TooltipModule
+    TooltipModule,
+    FileUploadModule
   ],
   providers: [MessageService, { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }, LoginGuard, AnonymousGuard],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
