@@ -2,18 +2,19 @@ import {Injectable} from '@angular/core';
 import {HttpInterceptor, HttpEvent, HttpRequest, HttpHandler} from '@angular/common/http';
 import {catchError, Observable} from 'rxjs';
 import {AuthenticateService} from "../service/authenticate.service";
+import {TokenService} from "../service/token.service";
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
 
-  constructor(protected authenticateService: AuthenticateService) {
+  constructor(protected authenticateService: AuthenticateService, protected tokenService: TokenService) {
   }
 
 
   intercept(httpRequest: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    const token = localStorage.getItem('token');
-    if (token && httpRequest.url.includes('api/')) {
+    const token = this.tokenService.getToken();
+    if (token && this.tokenService.isTokenValid()) {
       const newRequest = httpRequest.clone({
         setHeaders: {
           Authorization: 'Bearer ' + token

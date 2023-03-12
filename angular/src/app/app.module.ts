@@ -23,6 +23,8 @@ import {MemeDetailComponent} from "./component/meme/detail/meme-detail.component
 import {SignUpComponent} from "./component/authenticate/sign-up/sign-up.component";
 import {ForgotPasswordComponent} from "./component/authenticate/forgot-password/forgot-password.component";
 import {NewPasswordComponent} from "./component/authenticate/new-password/new-password.component";
+import {AnonymousGuard} from "./config/anonymous-guard";
+import {LoginGuard} from "./config/login-guard";
 
 @NgModule({
   declarations: [
@@ -53,7 +55,7 @@ import {NewPasswordComponent} from "./component/authenticate/new-password/new-pa
     FontAwesomeModule,
     TooltipModule
   ],
-  providers: [MessageService, { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }],
+  providers: [MessageService, { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }, LoginGuard, AnonymousGuard],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })

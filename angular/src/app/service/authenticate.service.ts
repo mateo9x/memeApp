@@ -5,6 +5,7 @@ import {AuthenticateRequest} from "../model/authenticate-request";
 import {ToastService} from "./toast/toast.services";
 import {UserService} from "./user.service";
 import {Router} from "@angular/router";
+import {TokenService} from "./token.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ import {Router} from "@angular/router";
 export class AuthenticateService {
 
   constructor(private http: HttpClient, private toastService: ToastService, private userService: UserService,
-              private router: Router) {
+              private router: Router, private tokenService: TokenService) {
   }
 
   public authenticateUser(request: AuthenticateRequest) {
@@ -20,7 +21,7 @@ export class AuthenticateService {
       next: (response) => {
         const token = response.token;
         if (token) {
-          localStorage.setItem('token', token);
+          this.tokenService.saveToken(token, request.rememberMe);
           this.userService.getUserLogged().subscribe({
             next: (userResponse) => {
               this.userService.userLogged.next(userResponse);
@@ -40,7 +41,7 @@ export class AuthenticateService {
   public logoutUser(errorLoggedOut?: boolean) {
     this.http.post<any>(`${APP_BASE_URL}/logout`, {}).subscribe({
       next: () => {
-        localStorage.removeItem('token');
+        this.tokenService.removeToken();
         this.userService.userLogged.next(null);
         this.router.navigate(['']).then(() => {
           if (errorLoggedOut) {
