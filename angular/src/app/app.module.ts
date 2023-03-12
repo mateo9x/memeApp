@@ -25,6 +25,7 @@ import {ForgotPasswordComponent} from "./component/authenticate/forgot-password/
 import {NewPasswordComponent} from "./component/authenticate/new-password/new-password.component";
 import {AnonymousGuard} from "./config/anonymous-guard";
 import {LoginGuard} from "./config/login-guard";
+import {PageNotFoundComponent} from "./handler/page-not-found/page-not-found.component";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {LoginGuard} from "./config/login-guard";
     MemeDetailComponent,
     SignUpComponent,
     ForgotPasswordComponent,
-    NewPasswordComponent
+    NewPasswordComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
