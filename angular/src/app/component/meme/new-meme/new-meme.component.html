@@ -1,0 +1,16 @@
+<section class="new-meme-container">
+
+  <h3> Dodaj Mema </h3>
+
+  <p-fileUpload name="myfile[]"
+                accept="image/*" [auto]="true" maxFileSize="10000000" (onSelect)="uploadImage($event)"
+                chooseLabel="Wybierz"/>
+
+  <div class="button-container">
+    <button pButton type="button" class="p-button-raised p-button-rounded" (click)="tryCreateMeme()" [disabled]="!file">
+      Dodaj
+      mema
+    </button>
+  </div>
+
+</section>

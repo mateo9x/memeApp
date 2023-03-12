@@ -42,4 +42,8 @@ export class MemeService {
     return this.http.put<Meme>(`${this.MEME_URL}`, meme);
   }
 
+  public createMeme(meme: Meme): Observable<Meme> {
+    return this.http.post<Meme>(`${this.MEME_URL}`, meme);
+  }
+
 }

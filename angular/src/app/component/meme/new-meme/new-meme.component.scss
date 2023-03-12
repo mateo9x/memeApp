@@ -1,0 +1,47 @@
+::ng-deep {
+  .p-fileupload-row > div:last-child, .p-fileupload-row > div:nth-child(3), .p-fileupload-filename {
+    display: none !important;
+  }
+
+  img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 600px;
+  }
+
+  .p-filepload {
+    width: 50%;
+  }
+
+  .p-component, .p-component {
+    text-align: center;
+    width: 50%;
+    margin: auto;
+  }
+
+  .p-button .p-fileupload-choose {
+    text-align: center;
+    display: block;
+    width: auto;
+    max-width: 200px;
+  }
+
+  .button-container > .p-button {
+    width: auto;
+    max-width: 200px;
+    text-align: center;
+    display: block;
+  }
+
+  .new-meme-container div {
+    background-color: var(--main-background-color) !important;
+    border-color: var(--main-meme-button-color-hover) !important;
+  }
+
+}
+
+.button-container {
+  padding: 10px;
+}
+
