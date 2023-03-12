@@ -1,10 +1,10 @@
 # Meme App
 
-Meme app - made as an opportunity to browse daily memes uploaded by users.
+Meme app - made as an opportunity to browse memes uploaded daily by users.
 
 ## Provided functionalities
 - Sign in & Logout (JWT)
-- Display all approved, pending, by hashtag, Yours (must be signed in) memes
+- Display all approved, pending, by hashtag, by user, Yours (must be signed in) memes
 - Display random meme
 - Display detail view of meme
 - Dark mode
