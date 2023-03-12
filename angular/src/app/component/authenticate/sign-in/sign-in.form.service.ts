@@ -69,4 +69,9 @@ export class SignInFormService {
     return form.status === 'VALID';
   }
 
+  public clearForm(fb: FormGroup) {
+    this.getUsernameControl(fb).setValue(null);
+    this.getPasswordControl(fb).setValue(null);
+  }
+
 }

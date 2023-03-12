@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 
+import javax.validation.constraints.NotNull;
 import java.security.Key;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
@@ -26,9 +27,11 @@ public class TokenProvider {
     private static final Key KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
     @Value("${jwt.validity.time}")
+    @NotNull
     private long tokenValidity;
 
     @Value("${jwt.validity.rememberMe.time}")
+    @NotNull
     private long tokenValidityRememberMe;
 
     public String createToken(UserDTO userDTO, Boolean rememberMe) {
