@@ -12,7 +12,6 @@ import {Router} from "@angular/router";
 })
 export class SignUpComponent {
 
-  expanded = false;
   form: FormGroup;
 
   constructor(private userService: UserService, private formService: SignUpFormService, private toastService: ToastService,
@@ -70,6 +69,16 @@ export class SignUpComponent {
       }
     });
   }
+
+  get firstname() {
+    return this.form.get('firstname');
+  }
+
+
+  get lastname() {
+    return this.form.get('lastname');
+  }
+
 
   get username() {
     return this.form.get('username');

@@ -21,6 +21,8 @@ import {MemeComponent} from "./component/meme/meme.component";
 import {TooltipModule} from "primeng/tooltip";
 import {MemeDetailComponent} from "./component/meme/detail/meme-detail.component";
 import {SignUpComponent} from "./component/authenticate/sign-up/sign-up.component";
+import {ForgotPasswordComponent} from "./component/authenticate/forgot-password/forgot-password.component";
+import {NewPasswordComponent} from "./component/authenticate/new-password/new-password.component";
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import {SignUpComponent} from "./component/authenticate/sign-up/sign-up.componen
     MemeListComponent,
     MemeComponent,
     MemeDetailComponent,
-    SignUpComponent
+    SignUpComponent,
+    ForgotPasswordComponent,
+    NewPasswordComponent
   ],
   imports: [
     BrowserModule,

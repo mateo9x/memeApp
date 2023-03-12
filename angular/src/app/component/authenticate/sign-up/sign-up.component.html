@@ -2,6 +2,14 @@
 
 <form [formGroup]="form" novalidate>
   <div class="input">
+    <input pInputText type="text" formControlName="firstname" placeholder="Imię"/>
+  </div>
+
+  <div class="input">
+    <input pInputText type="text" formControlName="lastname" placeholder="Nazwisko"/>
+  </div>
+
+  <div class="input">
     <input pInputText type="text" formControlName="username" placeholder="Login" (focusout)="checkIfUserWithUsernameExists()"/>
     <span class="span-error" *ngIf="username?.errors?.['userExists']">{{this.username?.getError('userExists')}}</span>
   </div>

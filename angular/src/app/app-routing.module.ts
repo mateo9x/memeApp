@@ -4,6 +4,8 @@ import {LogoutComponent} from "./component/authenticate/logout/logout.component"
 import {MemeListComponent} from "./component/meme/list/meme-list.component";
 import {MemeDetailComponent} from "./component/meme/detail/meme-detail.component";
 import {SignUpComponent} from "./component/authenticate/sign-up/sign-up.component";
+import {ForgotPasswordComponent} from "./component/authenticate/forgot-password/forgot-password.component";
+import {NewPasswordComponent} from "./component/authenticate/new-password/new-password.component";
 
 const routes: Routes = [
   {path: '', component: MemeListComponent, title: 'Główna'},
@@ -13,7 +15,9 @@ const routes: Routes = [
   {path: 'meme/:id', component: MemeDetailComponent, title: 'Szczegóły mema'},
   {path: 'meme/random', component: MemeDetailComponent, title: 'Losowy memy'},
   {path: 'logout', component: LogoutComponent, title: 'Wyloguj się'},
-  {path: 'sign-up', component: SignUpComponent, title: 'Zarejestruj się'}
+  {path: 'sign-up', component: SignUpComponent, title: 'Zarejestruj się'},
+  {path: 'forgot-password', component: ForgotPasswordComponent, title: 'Odzyskiwanie hasła'},
+  {path: 'new-password', component: NewPasswordComponent, title: 'Potwierdź nowe hasła'}
 ];
 
 @NgModule({

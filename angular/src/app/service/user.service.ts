@@ -31,4 +31,16 @@ export class UserService {
     return this.http.get<User>(`${this.USERS_URL}/email/${email}`);
   }
 
+  public startResetPasswordProcedure(email: string): Observable<void> {
+    return this.http.get<void>(`${this.USERS_URL}/reset-password/start/${email}`);
+  }
+
+  public getUserByResetToken(resetToken: string): Observable<User> {
+    return this.http.get<User>(`${this.USERS_URL}/reset-token/${resetToken}`);
+  }
+
+  public finishResetPasswordProcedure(request: any): Observable<User> {
+    return this.http.put<User>(`${this.USERS_URL}/reset-password/finish`, request);
+  }
+
 }
