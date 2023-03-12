@@ -21,6 +21,7 @@ export class SignInComponent {
   signIn() {
     const request = this.formService.convertFormToAuthenticationRequest(this.form);
     this.authenticateService.authenticateUser(request);
+    this.formService.clearForm(this.form);
   }
 
   signInIfFormValid() {

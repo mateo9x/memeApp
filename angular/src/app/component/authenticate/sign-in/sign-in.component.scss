@@ -21,11 +21,6 @@ div > a {
   font-size: 14px;
 }
 
-div > a:hover {
-  transition: 0.25s;
-  text-decoration: underline;
-}
-
 a:hover {
   color: var(--main-text-color-hover);
   cursor: pointer;
