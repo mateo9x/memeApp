@@ -87,6 +87,16 @@ fa-icon:hover {
   box-shadow: var(--main-button-color) !important;
 }
 
+.p-chips .p-chips-multiple-container:not(.p-disabled):hover {
+  box-shadow: none !important;
+  border-color: var(--main-button-color) !important;
+}
+
+.p-chips .p-chips-multiple-container:not(.p-disabled).p-focus {
+  box-shadow: none !important;
+  border-color: var(--main-button-color) !important;
+}
+
 a {
   font-size: 18px;
   color: var(--main-text-color);
