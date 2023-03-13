@@ -16,6 +16,7 @@ Meme app - made as an opportunity to browse memes uploaded daily by users.
 - Movies
 - Meme comments
 - User authorities and provide permissions for some actions
+- Internalization (EN/PL languages)
 
 ## How to run
 - Replace placholders in `application.properties` (Required for reset password functionality)
