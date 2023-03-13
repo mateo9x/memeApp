@@ -10,11 +10,12 @@ Meme app - made as an opportunity to browse memes uploaded daily by users.
 - Dark mode
 - Forgot password
 - Add new meme
+- User profile update
 
 ## TODO functionalities
-- User profile update
 - Movies
 - Meme comments
+- Internalization
 - User authorities and provide permissions for some actions
 
 ## How to run

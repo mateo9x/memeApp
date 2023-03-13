@@ -8,4 +8,5 @@ export class User {
   password2?: string;
   photoUrl: string;
   resetToken: string;
+  language: string;
 }

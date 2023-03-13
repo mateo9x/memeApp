@@ -1,0 +1,38 @@
+<ng-container *ngIf="user">
+
+  <h3>Witaj {{user.firstname | titlecase }} {{ user.lastname | titlecase }} !</h3>
+
+  <form [formGroup]="form" novalidate>
+    <div class="input">
+      <input pInputText type="text" formControlName="firstname" placeholder="Imię"/>
+    </div>
+
+    <div class="input">
+      <input pInputText type="text" formControlName="lastname" placeholder="Nazwisko"/>
+    </div>
+
+    <div class="input">
+      <input pInputText type="text" formControlName="username" placeholder="Login"/>
+    </div>
+
+    <div class="input">
+      <input pInputText type="text" formControlName="email" placeholder="E-mail"/>
+    </div>
+
+    <div class="input">
+      <input pInputText type="password" formControlName="password" placeholder="Hasło"/>
+    </div>
+    <button pButton type="button" class="p-button-raised p-button-rounded" (click)="openPasswordDialog()">Zmień hasło
+    </button>
+
+    <div class="input">
+      <p-dropdown [options]="languages" formControlName="language" placeholder="Język"></p-dropdown>
+    </div>
+
+    <button pButton type="button" class="p-button-raised p-button-rounded" (click)="update()"
+            [disabled]="!isFormValid()">Aktualizuj dane
+    </button>
+  </form>
+
+
+</ng-container>

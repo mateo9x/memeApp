@@ -17,5 +17,6 @@ public class UserDTO {
     private String password;
     private String photoUrl;
     private String resetToken;
+    private String language;
 
 }
