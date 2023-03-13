@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {Meme} from "../../model/meme";
 import {MemeService} from "../../service/meme.service";
 import {User} from "../../model/user";
+import {FileService} from "../../service/file.service";
 
 @Component({
   selector: 'meme',
@@ -17,7 +18,7 @@ export class MemeComponent {
 
   defaultUserUrl = '/assets/profile-not-found.png';
 
-  constructor(private memeService: MemeService) {
+  constructor(private memeService: MemeService, private fileService: FileService) {
   }
 
   updateMemeUpVote() {
@@ -53,6 +54,10 @@ export class MemeComponent {
       return this.meme.userPhotoUrl;
     }
     return this.defaultUserUrl;
+  }
+
+  getMemePhoto() {
+    return this.fileService.getFile(this.meme.file);
   }
 
 }

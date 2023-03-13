@@ -4,7 +4,7 @@
     <span class="meme-time">{{calcTimeSinceMemCreated()}}</span>
   </div>
   <span class="meme-title" [routerLink]="'/meme/' + meme.id">{{meme.title}}</span>
-  <img class="meme-img" alt="" [src]="meme.photoUrl" [routerLink]="'/meme/' + meme.id">
+  <img class="meme-img" alt="" [src]="getMemePhoto()" [routerLink]="'/meme/' + meme.id">
   <div class="meme-tags">
     <ng-container *ngFor="let tag of getMemeTags()">
       <div class="meme-tag" [routerLink]="'/tags/' + tag">#{{tag}}</div>

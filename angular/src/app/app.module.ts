@@ -28,6 +28,8 @@ import {LoginGuard} from "./config/login-guard";
 import {PageNotFoundComponent} from "./handler/page-not-found/page-not-found.component";
 import {NewMemeComponent} from "./component/meme/new-meme/new-meme.component";
 import {FileUploadModule} from "primeng/fileupload";
+import {PasswordModule} from "primeng/password";
+import {ChipsModule} from "primeng/chips";
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import {FileUploadModule} from "primeng/fileupload";
     IconModule,
     FontAwesomeModule,
     TooltipModule,
-    FileUploadModule
+    FileUploadModule,
+    PasswordModule,
+    ChipsModule
   ],
   providers: [MessageService, { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }, LoginGuard, AnonymousGuard],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

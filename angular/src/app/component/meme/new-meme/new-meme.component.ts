@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {MemeService} from "../../../service/meme.service";
-import {UserService} from "../../../service/user.service";
 import {User} from "../../../model/user";
 import {Meme} from "../../../model/meme";
-import {FileService, MEME_ASSETS_PATH_PREFIX} from "../../../service/file.service";
+import {FileService} from "../../../service/file.service";
 import {ToastService} from "../../../service/toast/toast.services";
 import {Router} from "@angular/router";
+import {UserService} from "../../../service/user.service";
 
 @Component({
   selector: 'new-meme',
@@ -17,14 +17,14 @@ export class NewMemeComponent implements OnInit {
   userLogged: User;
   meme: Meme = new Meme();
   file: File;
+  tags: any[] = [];
 
-  constructor(private memeService: MemeService, private userService: UserService,
-              private fileService: FileService, private toastService: ToastService,
-              private router: Router) {
+  constructor(private memeService: MemeService, private fileService: FileService, private toastService: ToastService,
+              private router: Router, private userService: UserService) {
   }
 
   ngOnInit() {
-    this.userService.userLogged.subscribe({
+    this.userService.getUserLogged().subscribe({
       next: (response) => {
         this.userLogged = response;
       }
@@ -35,45 +35,38 @@ export class NewMemeComponent implements OnInit {
     this.file = event.currentFiles[0];
   }
 
-  tryCreateMeme() {
-    this.fileService.doesFileAlreadyExists(this.userLogged.id, this.file.name).subscribe({
-      next: () => {
-        this.toastService.createErrorToast('Plik z taką nazwą już istnieje, zmień nazwę i wrzuć plik ponownie');
-      },
-      error: () => {
-        this.createMeme();
-      }
-    });
-  }
-
   createMeme() {
-    this.fileService.saveFile(this.userLogged.id, this.file.name, this.file).subscribe({
-      next: () => {
-        this.prepareMemeData();
-        this.memeService.createMeme(this.meme).subscribe({
-          next: (response) => {
-            this.router.navigate([`/meme/${response.id}`]).then(() => {
-              this.toastService.createSuccessToast('Mem został utworzony');
+    this.prepareMemeData();
+    this.memeService.createMeme(this.meme).subscribe({
+      next: (memeResponse) => {
+        this.fileService.saveFile(memeResponse.photoUrl, this.file).subscribe({
+          next: () => {
+            this.router.navigate([`meme/${memeResponse.id}`]).then(() => {
+              this.toastService.createSuccessToast('Mem został zapisany pomyślnie');
             });
           },
           error: () => {
-            this.toastService.createErrorToast('Mem nie został utworzony');
+            this.toastService.createErrorToast('Zapis mema nie powiódł się');
           }
         });
       },
       error: () => {
-        this.toastService.createErrorToast('Mem nie został utworzony');
+        this.toastService.createErrorToast('Zapis mema nie powiódł się');
       }
     });
   }
 
   prepareMemeData() {
+    const photoUrl = `memes/${this.userLogged.id}/$REPLACE_MEM_ID_${this.file.name}`;
     this.meme.title = this.file.name;
-    this.meme.userPhotoUrl = MEME_ASSETS_PATH_PREFIX + this.userLogged.id;
+    this.meme.photoUrl = photoUrl;
     this.meme.userId = this.userLogged.id;
     this.meme.dateCreated = new Date();
     this.meme.upVotes = 0;
     this.meme.downVotes = 0;
+    if (this.tags.length > 0) {
+      this.meme.tags = this.tags.join(',');
+    }
   }
 
 }

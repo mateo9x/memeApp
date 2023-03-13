@@ -14,12 +14,6 @@
     width: 50%;
   }
 
-  .p-component, .p-component {
-    text-align: center;
-    width: 50%;
-    margin: auto;
-  }
-
   .p-button .p-fileupload-choose {
     text-align: center;
     display: block;
@@ -39,9 +33,38 @@
     border-color: var(--main-meme-button-color-hover) !important;
   }
 
+  .p-chips .p-chips-multiple-container .p-chips-token {
+    background-color: var(--main-meme-button-color);
+    color: var(--main-tag-color);
+  }
+
+  .new-meme-input > .p-inputtext, .new-meme-input > .p-chips {
+    width: 100% !important;
+  }
+
+  .p-chips {
+    display: block !important;
+  }
+
+  .p-fileupload .p-fileupload-buttonbar .p-button {
+    border-radius: 2rem !important;
+  }
+
+}
+
+.new-meme-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .button-container {
   padding: 10px;
 }
 
+.new-meme-input {
+  max-width: 300px;
+  width: 300px;
+  padding: 10px;
+}
