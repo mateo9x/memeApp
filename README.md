@@ -9,7 +9,7 @@ Meme app - made as an opportunity to browse memes uploaded daily by users.
 - Display detail view of meme
 - Dark mode
 - Forgot password
-- Add new meme (in progress)
+- Add new meme
 
 ## TODO functionalities
 - User profile update

@@ -23,5 +23,6 @@ public class MemeDTO {
     private Integer downVotes;
     private Boolean approved;
     private String tags;
+    private byte[] file;
 }
 
