@@ -30,6 +30,12 @@ import {NewMemeComponent} from "./component/meme/new-meme/new-meme.component";
 import {FileUploadModule} from "primeng/fileupload";
 import {PasswordModule} from "primeng/password";
 import {ChipsModule} from "primeng/chips";
+import {ProfileSettingsComponent} from "./component/profile/settings/profile-settings.component";
+import {
+  NewPasswordDialogComponent
+} from "./component/profile/settings/new-password-dialog/new-password-dialog.component";
+import {DialogService, DynamicDialogModule} from "primeng/dynamicdialog";
+import {DropdownModule} from "primeng/dropdown";
 
 @NgModule({
   declarations: [
@@ -44,7 +50,9 @@ import {ChipsModule} from "primeng/chips";
     ForgotPasswordComponent,
     NewPasswordComponent,
     PageNotFoundComponent,
-    NewMemeComponent
+    NewMemeComponent,
+    ProfileSettingsComponent,
+    NewPasswordDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -63,9 +71,11 @@ import {ChipsModule} from "primeng/chips";
     TooltipModule,
     FileUploadModule,
     PasswordModule,
-    ChipsModule
+    ChipsModule,
+    DynamicDialogModule,
+    DropdownModule
   ],
-  providers: [MessageService, { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }, LoginGuard, AnonymousGuard],
+  providers: [MessageService, { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }, LoginGuard, AnonymousGuard, DialogService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })

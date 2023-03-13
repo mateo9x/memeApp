@@ -37,6 +37,11 @@ public class UserController {
         return ResponseEntity.ok(userService.saveUser(userDTO));
     }
 
+    @PutMapping("/users")
+    public ResponseEntity<UserDTO> updateUser(@RequestBody @Valid UserDTO userDTO) {
+        return ResponseEntity.ok(userService.updateUser(userDTO));
+    }
+
     @GetMapping("/users/user-logged")
     public ResponseEntity<UserDTO> getUserLogged() {
         log.info("REST request to get user logged");
@@ -71,6 +76,11 @@ public class UserController {
     public void finishResetPasswordProcedure(@RequestBody @Valid UserNewPasswordRequest userNewPasswordRequest) {
         log.info("REST request to finish reset password procedure for email: {}", userNewPasswordRequest.email());
         userService.finishResetPasswordProcedure(userNewPasswordRequest);
+    }
+
+    @PutMapping("/users/{userId}/update-password/{password}")
+    public ResponseEntity<Boolean> updateUserPassword(@PathVariable Long userId, @PathVariable String password) {
+        return ResponseEntity.ok(userService.updateUserPassword(userId, password));
     }
 
 }

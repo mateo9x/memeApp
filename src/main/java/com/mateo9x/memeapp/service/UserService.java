@@ -8,6 +8,7 @@ import java.util.Optional;
 public interface UserService {
 
    UserDTO saveUser(UserDTO userDTO);
+   UserDTO updateUser(UserDTO userDTO);
    Optional<UserDTO> getUserByUsername(String username);
    Optional<UserDTO> getUserByEmail(String email);
    Boolean doesBothPasswordsMatches(String dbPassword, String passwordTypedByUser);
@@ -18,4 +19,6 @@ public interface UserService {
    UserDTO getUserByResetToken(String resetToken);
 
    void finishResetPasswordProcedure(UserNewPasswordRequest userNewPasswordRequest);
+
+   boolean updateUserPassword(Long userId, String password);
 }

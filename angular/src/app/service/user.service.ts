@@ -23,6 +23,10 @@ export class UserService {
     return this.http.post<User>(this.USERS_URL, user);
   }
 
+  public updateUser(user: User): Observable<User> {
+    return this.http.put<User>(this.USERS_URL, user);
+  }
+
   public getUserByUsername(username: string): Observable<User> {
     return this.http.get<User>(`${this.USERS_URL}/username/${username}`);
   }
@@ -41,6 +45,10 @@ export class UserService {
 
   public finishResetPasswordProcedure(request: any): Observable<User> {
     return this.http.put<User>(`${this.USERS_URL}/reset-password/finish`, request);
+  }
+
+  public updateUserPassword(userId: number, password: string): Observable<boolean> {
+    return this.http.put<boolean>(`${this.USERS_URL}/${userId}/update-password/${password}`, {});
   }
 
 }

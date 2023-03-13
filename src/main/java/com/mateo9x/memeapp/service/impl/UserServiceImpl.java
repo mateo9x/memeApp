@@ -17,6 +17,8 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 import java.util.UUID;
 
+import static java.util.Objects.isNull;
+
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -30,6 +32,12 @@ public class UserServiceImpl implements UserService {
     public UserDTO saveUser(UserDTO userDTO) {
         User user = userMapper.toEntity(userDTO);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userMapper.toDTO(userRepository.save(user));
+    }
+
+    @Override
+    public UserDTO updateUser(UserDTO userDTO) {
+        User user = userMapper.toEntity(userDTO);
         return userMapper.toDTO(userRepository.save(user));
     }
 
@@ -82,6 +90,17 @@ public class UserServiceImpl implements UserService {
     public void finishResetPasswordProcedure(UserNewPasswordRequest userNewPasswordRequest) {
         Optional<User> userOptional = userRepository.findUserByEmail(userNewPasswordRequest.email());
         userOptional.ifPresent(user -> finishResetPasswordProcedure(user, userNewPasswordRequest.password()));
+    }
+
+    @Override
+    public boolean updateUserPassword(Long userId, String password) {
+        User user = userRepository.findById(userId).orElse(null);
+        if (isNull(user)) {
+            return false;
+        }
+        user.setPassword(passwordEncoder.encode(password));
+        userRepository.save(user);
+        return true;
     }
 
     private void finishResetPasswordProcedure(User user, String newPassword) {

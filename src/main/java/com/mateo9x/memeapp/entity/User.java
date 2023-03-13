@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
+import javax.validation.constraints.Size;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -44,4 +46,7 @@ public class User {
     private String photoUrl;
     @Column(name = "reset_token")
     private String resetToken;
+    @Column
+    @Size(min = 2, max = 2)
+    private String language;
 }
