@@ -1,31 +1,34 @@
-<a (click)="toggleExpanded()">Zaloguj się</a>
+<a (click)="toggleExpanded()">{{'authentication.sign-in.placeholders.title' | translate}}</a>
 
 <ng-container *ngIf="expanded">
   <form [formGroup]="form" novalidate class="sign-in-expanded">
     <div>
-      <input pInputText type="text" formControlName="username" placeholder="Użytkownik"
+      <input pInputText type="text" formControlName="username"
+             placeholder="{{'authentication.sign-in.placeholders.username' | translate}}"
              (keyup.enter)="signInIfFormValid()"/>
     </div>
 
     <div>
-      <input pInputText type="password" formControlName="password" placeholder="Hasło"
+      <input pInputText type="password" formControlName="password"
+             placeholder="{{'authentication.sign-in.placeholders.password' | translate}}"
              (keyup.enter)="signInIfFormValid()"/>
     </div>
 
     <div>
-      <p-checkbox formControlName="rememberMe" [binary]="true" label="Zapamiętaj mnie"></p-checkbox>
+      <p-checkbox formControlName="rememberMe" [binary]="true"
+                  label="{{'authentication.sign-in.placeholders.rememberMe' | translate}}"></p-checkbox>
     </div>
 
     <div>
-      <a routerLink="sign-up">Zarejestruj się</a>
+      <a routerLink="sign-up">{{'authentication.sign-in.placeholders.signUp' | translate}}</a>
     </div>
 
     <div>
-      <a routerLink="forgot-password">Nie pamiętasz hasła?</a>
+      <a routerLink="forgot-password">{{'authentication.sign-in.placeholders.forgotPassword' | translate}}</a>
     </div>
 
     <button pButton type="button" class="p-button-raised p-button-rounded" (click)="signIn()"
-            [disabled]="!isFormValid()">Zaloguj się
+            [disabled]="!isFormValid()">{{'authentication.sign-in.placeholders.signIn' | translate}}
     </button>
   </form>
 </ng-container>

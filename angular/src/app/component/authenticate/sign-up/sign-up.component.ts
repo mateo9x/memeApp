@@ -4,6 +4,7 @@ import {FormGroup} from "@angular/forms";
 import {UserService} from "../../../service/user.service";
 import {ToastService} from "../../../service/toast/toast.services";
 import {Router} from "@angular/router";
+import {LanguageService} from "../../../service/language.service";
 
 @Component({
   selector: 'sign-up',
@@ -15,7 +16,7 @@ export class SignUpComponent {
   form: FormGroup;
 
   constructor(private userService: UserService, private formService: SignUpFormService, private toastService: ToastService,
-              private router: Router) {
+              private router: Router, private languageService: LanguageService) {
     this.form = this.formService.getFormGroup();
   }
 
@@ -25,11 +26,11 @@ export class SignUpComponent {
       next: () => {
         this.router.navigate(['']).then(() => {
           this.formService.clearForm(this.form);
-          this.toastService.createSuccessToast('Użytkownik zarejestrowany pozytywnie');
+          this.toastService.createSuccessToast(this.languageService.getMessage('authentication.sign-up.userCreatedSuccess'));
         });
       },
       error: () => {
-        this.toastService.createErrorToast('Rejestracja nie powiodła się');
+        this.toastService.createErrorToast(this.languageService.getMessage('authentication.sign-up.userCreatedError'));
       }
     });
   }
@@ -47,7 +48,7 @@ export class SignUpComponent {
     this.userService.getUserByUsername(username).subscribe({
       next: (response) => {
         if (response) {
-          this.username?.setErrors({userExists: 'Użytkownik z takim loginem już istnieje!'});
+          this.username?.setErrors({userExists: this.languageService.getMessage('authentication.sign-up.placeholders.errors.usernameExists')});
         } else {
           this.username?.setErrors({userExists: null});
           this.username?.updateValueAndValidity();
@@ -61,7 +62,7 @@ export class SignUpComponent {
     this.userService.getUserByEmail(email).subscribe({
       next: (response) => {
         if (response) {
-          this.email?.setErrors({emailExists: 'Użytkownik z takim adresem e-mail już istnieje!'});
+          this.email?.setErrors({emailExists: this.languageService.getMessage('authentication.sign-up.placeholders.errors.emailExists')});
         } else {
           this.email?.setErrors({emailExists: null});
           this.email?.updateValueAndValidity();

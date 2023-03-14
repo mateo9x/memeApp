@@ -6,6 +6,7 @@ import {FileService} from "../../../service/file.service";
 import {ToastService} from "../../../service/toast/toast.services";
 import {Router} from "@angular/router";
 import {UserService} from "../../../service/user.service";
+import {LanguageService} from "../../../service/language.service";
 
 @Component({
   selector: 'new-meme',
@@ -20,7 +21,7 @@ export class NewMemeComponent implements OnInit {
   tags: any[] = [];
 
   constructor(private memeService: MemeService, private fileService: FileService, private toastService: ToastService,
-              private router: Router, private userService: UserService) {
+              private router: Router, private userService: UserService, private languageService: LanguageService) {
   }
 
   ngOnInit() {
@@ -42,16 +43,16 @@ export class NewMemeComponent implements OnInit {
         this.fileService.saveFile(memeResponse.photoUrl, this.file).subscribe({
           next: () => {
             this.router.navigate([`meme/${memeResponse.id}`]).then(() => {
-              this.toastService.createSuccessToast('Mem został zapisany pomyślnie');
+              this.toastService.createSuccessToast(this.languageService.getMessage('new-meme.save.success'));
             });
           },
           error: () => {
-            this.toastService.createErrorToast('Zapis mema nie powiódł się');
+            this.toastService.createErrorToast(this.languageService.getMessage('new-meme.save.error'));
           }
         });
       },
       error: () => {
-        this.toastService.createErrorToast('Zapis mema nie powiódł się');
+        this.toastService.createErrorToast(this.languageService.getMessage('new-meme.save.error'));
       }
     });
   }

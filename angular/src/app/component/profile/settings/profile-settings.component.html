@@ -1,36 +1,41 @@
 <ng-container *ngIf="user">
 
-  <h3>Witaj {{user.firstname | titlecase }} {{ user.lastname | titlecase }} !</h3>
+  <h3>{{'profile.settings.placeholders.welcome' | translate}} {{user.firstname | titlecase }} {{ user.lastname | titlecase }}
+    !</h3>
 
   <form [formGroup]="form" novalidate>
     <div class="input">
-      <input pInputText type="text" formControlName="firstname" placeholder="Imię"/>
+      <input pInputText type="text" formControlName="firstname"
+             placeholder="{{'profile.settings.placeholders.firstname' | translate}}"/>
     </div>
 
     <div class="input">
-      <input pInputText type="text" formControlName="lastname" placeholder="Nazwisko"/>
+      <input pInputText type="text" formControlName="lastname"
+             placeholder="{{'profile.settings.placeholders.lastname' | translate}}"/>
     </div>
 
     <div class="input">
-      <input pInputText type="text" formControlName="username" placeholder="Login"/>
+      <input pInputText type="text" formControlName="username"/>
     </div>
 
     <div class="input">
-      <input pInputText type="text" formControlName="email" placeholder="E-mail"/>
+      <input pInputText type="text" formControlName="email"/>
     </div>
 
     <div class="input">
-      <input pInputText type="password" formControlName="password" placeholder="Hasło"/>
+      <input pInputText type="password" formControlName="password"/>
     </div>
-    <button pButton type="button" class="p-button-raised p-button-rounded" (click)="openPasswordDialog()">Zmień hasło
+    <button pButton type="button" class="p-button-raised p-button-rounded"
+            (click)="openPasswordDialog()">{{'profile.settings.placeholders.changePassword' | translate}}
     </button>
 
     <div class="input">
-      <p-dropdown [options]="languages" formControlName="language" placeholder="Język"></p-dropdown>
+      <p-dropdown [options]="languages" formControlName="language" (onChange)="changeLanguage()"></p-dropdown>
+      <span *ngIf="!formSaved" class="span-error">{{'profile.settings.placeholders.formNotSaved' | translate}}</span>
     </div>
 
     <button pButton type="button" class="p-button-raised p-button-rounded" (click)="update()"
-            [disabled]="!isFormValid()">Aktualizuj dane
+            [disabled]="!isFormValid()">{{'profile.settings.placeholders.updateForm' | translate}}
     </button>
   </form>
 

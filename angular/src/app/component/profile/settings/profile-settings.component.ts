@@ -6,6 +6,7 @@ import {ProfileSettingsFormService} from "./profile-settings.form.service";
 import {ToastService} from "../../../service/toast/toast.services";
 import {DialogService} from "primeng/dynamicdialog";
 import {NewPasswordDialogComponent} from "./new-password-dialog/new-password-dialog.component";
+import {LanguageService} from "../../../service/language.service";
 
 @Component({
   selector: 'profile-settings',
@@ -14,20 +15,24 @@ import {NewPasswordDialogComponent} from "./new-password-dialog/new-password-dia
 })
 export class ProfileSettingsComponent implements OnInit {
 
+  formSaved = true;
   user: User;
   form: FormGroup;
   languages = [{label: 'Polski', value: 'pl'},
     {label: 'English', value: 'en'}];
 
   constructor(private userService: UserService, private formService: ProfileSettingsFormService,
-              private toastService: ToastService, private dialogService: DialogService) {
+              private toastService: ToastService, private dialogService: DialogService,
+              private languageService: LanguageService) {
     this.form = this.formService.getFormGroup();
+
   }
 
   ngOnInit() {
     this.userService.getUserLogged().subscribe({
       next: (response) => {
         this.user = response;
+        this.languageService.setUserLanguage(response.language);
         this.prepareForm();
       }
     });
@@ -37,21 +42,26 @@ export class ProfileSettingsComponent implements OnInit {
     this.formService.prepareForm(this.user, this.form);
   }
 
+  changeLanguage() {
+    this.languageService.setUserLanguage(this.language?.value);
+    this.formSaved = false;
+  }
+
   openPasswordDialog() {
     let refData = this.dialogService.open(NewPasswordDialogComponent, {
       data: this.user
     });
     refData.onClose.subscribe({
       next: (response) => {
-        if (response.password) {
+        if (response && response.password) {
           this.userService.updateUserPassword(this.user.id, response.password).subscribe({
             next: (booleanResponse) => {
               if (booleanResponse) {
-                this.toastService.createSuccessToast('Hasło zaaktualizowane pomyślnie');
+                this.toastService.createSuccessToast(this.languageService.getMessage('profile.settings.passwordUpdate.success'));
               }
             },
             error: () => {
-              this.toastService.createErrorToast('Aktualizacja hasła nie powiodła się');
+              this.toastService.createErrorToast(this.languageService.getMessage('profile.settings.passwordUpdate.error'));
             }
           });
         }
@@ -63,11 +73,14 @@ export class ProfileSettingsComponent implements OnInit {
     this.formService.convertFormToUser(this.form, this.user);
     this.userService.updateUser(this.user).subscribe({
       next: (response) => {
+        this.formSaved = true;
         this.user = response;
-        this.toastService.createSuccessToast('Dane zaaktualizowane pomyślnie');
+        this.languageService.setUserLanguage(response.language);
+        this.languageService.saveLanguage(response.language);
+        this.toastService.createSuccessToast(this.languageService.getMessage('profile.settings.formUpdate.success'));
       },
       error: () => {
-        this.toastService.createErrorToast('Aktualizacja danych nie powiodła się');
+        this.toastService.createErrorToast(this.languageService.getMessage('profile.settings.formUpdate.error'));
       }
     });
   }

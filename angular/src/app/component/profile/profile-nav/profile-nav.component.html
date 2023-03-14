@@ -1,21 +1,22 @@
-<img [src]="user.photoUrl ? user.photoUrl : defaultPhotoUrl" alt="" [pTooltip]="user.username" tooltipPosition="bottom" (click)="toggleExpanded()">
+<img [src]="user.photoUrl ? user.photoUrl : defaultPhotoUrl" alt="" [pTooltip]="user.username" tooltipPosition="bottom"
+     (click)="toggleExpanded()">
 
 <ng-container *ngIf="expanded">
   <div class="profile-nav-expanded">
     <div>
       <a routerLink="profile-settings">
         <fa-icon icon="gear"/>
-        Ustawienia</a>
+        {{'profile.profile-nav.settings' | translate}}</a>
     </div>
     <div>
       <a [routerLink]="'user/' + user.id">
         <fa-icon icon="meteor"/>
-        Twoje memy</a>
+        {{'profile.profile-nav.yourMemes' | translate}}</a>
     </div>
     <div>
       <a routerLink="logout">
         <fa-icon icon="sign-out"/>
-        Wyloguj się</a>
+        {{'profile.profile-nav.logout' | translate}}</a>
     </div>
   </div>
 </ng-container>

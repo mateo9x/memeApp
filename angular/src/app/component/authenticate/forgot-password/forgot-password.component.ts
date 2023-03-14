@@ -4,6 +4,7 @@ import {UserService} from "../../../service/user.service";
 import {ToastService} from "../../../service/toast/toast.services";
 import {Router} from "@angular/router";
 import {ForgotPasswordFormService} from "./forgot-password.form.service";
+import {LanguageService} from "../../../service/language.service";
 
 @Component({
   selector: 'forgot-password',
@@ -15,7 +16,7 @@ export class ForgotPasswordComponent {
   form: FormGroup;
 
   constructor(private userService: UserService, private formService: ForgotPasswordFormService, private toastService: ToastService,
-              private router: Router) {
+              private router: Router, private languageService: LanguageService) {
     this.form = this.formService.getFormGroup();
   }
 
@@ -27,15 +28,15 @@ export class ForgotPasswordComponent {
           this.userService.startResetPasswordProcedure(email).subscribe({
             next: () => {
               this.router.navigate(['']).then(() => {
-                this.toastService.createSuccessToast('Link do odzyskania hasła został przesłany na wskazany adres e-mail. Zaloguj się, żeby kontynuować proces odzyskiwania hasła');
+                this.toastService.createSuccessToast(this.languageService.getMessage('authentication.forgot-password.startResetProcedureSuccess'));
               });
             },
             error: () => {
-              this.toastService.createErrorToast('Nie udało wygenerować się tokenu resetującego hasła');
+              this.toastService.createErrorToast(this.languageService.getMessage('authentication.forgot-password.startResetProcedureError'));
             }
           });
         } else {
-          this.toastService.createWarnToast('Użytkownik z podanym adresem e-mail nie istnieje');
+          this.toastService.createWarnToast(this.languageService.getMessage('authentication.forgot-password.userDoesntExist'));
         }
       }
     });

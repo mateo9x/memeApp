@@ -6,14 +6,17 @@
     <div class="nav-right">
       <section class="navigations">
         <div class="navigation-div">
-          <a routerLink="pending">Oczekujące</a>
-          <a routerLink="meme/random">Losowy mem</a>
-          <a routerLink="new-meme" *ngIf="userLogged">Dodaj mema</a>
+          <a routerLink="pending">{{'app.nav.pending' | translate}}</a>
+          <a routerLink="meme/random">{{'app.nav.randomMeme' | translate}}</a>
+          <a routerLink="new-meme" *ngIf="userLogged">{{'app.nav.addMeme' | translate}}</a>
         </div>
       </section>
       <section class="profile">
+        <span id="language" [class]="language" *ngIf="!userLogged" pTooltip="{{'app.nav.changeLanguage' | translate}}"
+              tooltipPosition="left" (click)="changeLanguage()"></span>
         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-        <fa-icon icon="moon" (click)="changeTheme()"></fa-icon>
+        <fa-icon icon="moon" (click)="changeTheme()" pTooltip="{{'app.nav.darkMode' | translate}}"
+                 tooltipPosition="left"></fa-icon>
         <sign-in *ngIf="!userLogged"></sign-in>
         <profile-nav *ngIf="userLogged" [user]="userLogged"></profile-nav>
       </section>

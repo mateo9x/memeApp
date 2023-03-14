@@ -1,27 +1,28 @@
 <form class="new-meme-container" #form="ngForm" novalidate>
 
-  <h3> Dodaj Mema </h3>
+  <h3>{{'new-meme.placeholders.title' | translate}}</h3>
 
   <div class="new-meme-input">
     <p-fileUpload name="myfile[]"
                   accept="image/*" [auto]="true" maxFileSize="10000000" (onSelect)="uploadImage($event)"
-                  chooseLabel="Wybierz"/>
+                  chooseLabel="{{'new-meme.placeholders.choose' | translate}}"/>
   </div>
 
   <div class="new-meme-input">
-    <input pInputText type="text" name="title" [(ngModel)]="meme.title" required placeholder="Tytuł mema"/>
+    <input pInputText type="text" name="title" [(ngModel)]="meme.title" required
+           placeholder="{{'new-meme.placeholders.memeTitle' | translate}}"/>
   </div>
 
   <div class="new-meme-input">
-    <p-chips [(ngModel)]="tags" name="tags" separator="," placeholder="Tagi (oddzielane przecinkiem)">
+    <p-chips [(ngModel)]="tags" name="tags" separator="," placeholder="{{'new-meme.placeholders.tags' | translate}}">
       <ng-template let-item pTemplate="item">#{{item}}</ng-template>
     </p-chips>
   </div>
 
   <div class="button-container">
-    <button pButton type="button" class="p-button-raised p-button-rounded" (click)="createMeme()" [disabled]="!file || !form.valid">
-      Dodaj
-      mema
+    <button pButton type="button" class="p-button-raised p-button-rounded" (click)="createMeme()"
+            [disabled]="!file || !form.valid">
+      {{'new-meme.placeholders.button' | translate}}
     </button>
   </div>
 
