@@ -13,7 +13,7 @@ public class MemeDTO {
 
     private Long id;
     private String title;
-    private String photoUrl;
+    private String url;
     private LocalDateTime dateCreated;
     private LocalDateTime dateApproved;
     private Long userId;
@@ -24,5 +24,6 @@ public class MemeDTO {
     private Boolean approved;
     private String tags;
     private byte[] file;
+    private Boolean isVideo;
 }
 

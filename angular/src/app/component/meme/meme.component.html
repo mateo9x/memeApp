@@ -4,7 +4,11 @@
     <span class="meme-time">{{calcTimeSinceMemCreated()}}</span>
   </div>
   <span class="meme-title" [routerLink]="'/meme/' + meme.id">{{meme.title}}</span>
-  <img class="meme-img" alt="" [src]="getMemePhoto()" [routerLink]="'/meme/' + meme.id">
+  <img class="meme-img" alt="" [src]="getMemePhoto()" [routerLink]="'/meme/' + meme.id" *ngIf="!meme.isVideo">
+  <video class="meme-img" controls *ngIf="meme.isVideo">
+    <source [src]="getMemeVideo()" type="video/mp4"/>
+    Browser not supported
+  </video>
   <div class="meme-tags">
     <ng-container *ngFor="let tag of getMemeTags()">
       <div class="meme-tag" [routerLink]="'/tags/' + tag">#{{tag}}</div>

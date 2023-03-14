@@ -89,15 +89,15 @@ public class MemeServiceImpl implements MemeService {
     @Override
     public MemeDTO createMeme(MemeDTO memeDTO) {
         long newId = memeRepository.findMaxIdFromMeme() + 1;
-        String photoUrl = memeDTO.getPhotoUrl().replace("$REPLACE_MEM_ID", Long.toString(newId));
-        memeDTO.setPhotoUrl(photoUrl);
+        String photoUrl = memeDTO.getUrl().replace("$REPLACE_MEM_ID", Long.toString(newId));
+        memeDTO.setUrl(photoUrl);
         Meme meme = memeMapper.toEntity(memeDTO);
         meme = memeRepository.save(meme);
         return memeMapper.toDTO(meme);
     }
 
     private MemeDTO getFileForMeme(MemeDTO memeDTO) {
-        memeDTO.setFile(fileService.getMemeFromResourceFolder(memeDTO.getPhotoUrl()));
+        memeDTO.setFile(fileService.getMemeFromResourceFolder(memeDTO.getUrl()));
         return memeDTO;
     }
 }

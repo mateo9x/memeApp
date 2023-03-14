@@ -4,7 +4,7 @@
 
   <div class="new-meme-input">
     <p-fileUpload name="myfile[]"
-                  accept="image/*" [auto]="true" maxFileSize="10000000" (onSelect)="uploadImage($event)"
+                  accept="video/*,image/*" [auto]="true" maxFileSize="10000000" (onSelect)="uploadImage($event)"
                   chooseLabel="{{'new-meme.placeholders.choose' | translate}}"/>
   </div>
 

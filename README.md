@@ -14,7 +14,6 @@ Meme app - made as an opportunity to browse memes uploaded daily by users.
 - Internalization (EN/PL)
 
 ## TODO functionalities
-- Movies
 - Meme comments
 - User authorities and provide permissions for some actions
 
