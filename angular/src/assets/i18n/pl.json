@@ -116,7 +116,7 @@
       "button": "Dodaj mema"
     },
     "save": {
-      "succes": "Mem został zapisany pomyślnie",
+      "success": "Mem został zapisany pomyślnie",
       "error": "Zapis mema nie powiódł się"
     }
   },
