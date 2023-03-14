@@ -23,6 +23,7 @@ export class MemeComponent {
   }
 
   updateMemeUpVote() {
+    console.log(this.meme)
     this.meme.upVotes = this.meme.upVotes + 1;
     this.memeService.updateMeme(this.meme).subscribe({});
   }
@@ -51,14 +52,15 @@ export class MemeComponent {
   }
 
   getUserAvatar() {
-    if (this.meme && this.meme.userPhotoUrl) {
-      return this.meme.userPhotoUrl;
-    }
-    return this.defaultUserUrl;
+    return this.fileService.getPhoto(this.meme.userIconFile);
   }
 
   getMemePhoto() {
-    return this.fileService.getFile(this.meme.file);
+    return this.fileService.getPhoto(this.meme.file);
+  }
+
+  getMemeVideo() {
+    return this.fileService.getVideo(this.meme.file);
   }
 
 }

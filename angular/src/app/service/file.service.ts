@@ -14,9 +14,17 @@ export class FileService {
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) {
   }
 
-  public getFile(file: any) {
+  public getPhoto(file: any) {
     if (file) {
       const image = 'data:image/jpeg;base64,' + file;
+      return this.sanitizer.bypassSecurityTrustResourceUrl(image);
+    }
+    return '';
+  }
+
+  public getVideo(file: any) {
+    if (file) {
+      const image = 'data:video/mp4;base64,' + file;
       return this.sanitizer.bypassSecurityTrustResourceUrl(image);
     }
     return '';

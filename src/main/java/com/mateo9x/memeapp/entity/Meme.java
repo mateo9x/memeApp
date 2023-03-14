@@ -29,15 +29,15 @@ public class Meme {
             strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
             parameters = {
                     @Parameter(name = "sequence_name", value = "meme_sequence"),
-                    @Parameter(name = "initial_value", value = "6"),
+                    @Parameter(name = "initial_value", value = "7"),
                     @Parameter(name = "increment_size", value = "1")
             }
     )
     private Long id;
     @Column
     private String title;
-    @Column(name = "photo_url")
-    private String photoUrl;
+    @Column(name = "url")
+    private String url;
     @Column(name = "date_created")
     private LocalDateTime dateCreated;
     @Column(name = "date_approved")
@@ -53,4 +53,6 @@ public class Meme {
     private Boolean approved;
     @Column
     private String tags;
+    @Column(name = "is_video")
+    private Boolean isVideo;
 }

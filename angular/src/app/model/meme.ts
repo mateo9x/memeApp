@@ -1,7 +1,7 @@
 export class Meme {
   id: number;
   title: string;
-  photoUrl: string;
+  url: string;
   dateCreated: Date;
   dateApproved?: Date;
   userId: number;
@@ -12,4 +12,6 @@ export class Meme {
   approved?: boolean;
   tags?: string;
   file: any;
+  isVideo: boolean;
+  userIconFile: any;
 }

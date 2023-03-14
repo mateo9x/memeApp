@@ -5,6 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 public interface FileService {
 
     byte[] getMemeFromResourceFolder(String fileName);
+    byte[] getMemeAuthorIconFromResourceFolder(String fileName);
 
     void saveMultipartFileInResourceFolder(String fileName, MultipartFile multipartFile);
 }

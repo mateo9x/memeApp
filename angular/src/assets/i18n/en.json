@@ -116,7 +116,7 @@
       "button": "Add meme"
     },
     "save": {
-      "succes": "Meme has been created",
+      "success": "Meme has been created",
       "error": "Error while saving meme"
     }
   },

@@ -5,6 +5,7 @@ import com.mateo9x.memeapp.entity.User;
 import com.mateo9x.memeapp.mapper.UserMapper;
 import com.mateo9x.memeapp.record.UserNewPasswordRequest;
 import com.mateo9x.memeapp.repository.UserRepository;
+import com.mateo9x.memeapp.service.FileService;
 import com.mateo9x.memeapp.service.MailService;
 import com.mateo9x.memeapp.service.UserService;
 import jakarta.transaction.Transactional;
@@ -27,6 +28,7 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
     private final MailService mailService;
+    private final FileService fileService;
 
     @Override
     public UserDTO saveUser(UserDTO userDTO) {
@@ -63,6 +65,7 @@ public class UserServiceImpl implements UserService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return userRepository.findUserByUsername((String) authentication.getPrincipal())
                 .map(userMapper::toDTO)
+                .map(this::getUserIcon)
                 .orElse(null);
     }
 
@@ -107,5 +110,10 @@ public class UserServiceImpl implements UserService {
         user.setResetToken(null);
         user.setPassword(passwordEncoder.encode(newPassword));
         userRepository.save(user);
+    }
+
+    private UserDTO getUserIcon(UserDTO userDTO) {
+        userDTO.setIconFile(fileService.getMemeAuthorIconFromResourceFolder(userDTO.getPhotoUrl()));
+        return userDTO;
     }
 }

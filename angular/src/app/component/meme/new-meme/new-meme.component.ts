@@ -40,7 +40,7 @@ export class NewMemeComponent implements OnInit {
     this.prepareMemeData();
     this.memeService.createMeme(this.meme).subscribe({
       next: (memeResponse) => {
-        this.fileService.saveFile(memeResponse.photoUrl, this.file).subscribe({
+        this.fileService.saveFile(memeResponse.url, this.file).subscribe({
           next: () => {
             this.router.navigate([`meme/${memeResponse.id}`]).then(() => {
               this.toastService.createSuccessToast(this.languageService.getMessage('new-meme.save.success'));
@@ -60,7 +60,7 @@ export class NewMemeComponent implements OnInit {
   prepareMemeData() {
     const photoUrl = `memes/${this.userLogged.id}/$REPLACE_MEM_ID_${this.file.name}`;
     this.meme.title = this.file.name;
-    this.meme.photoUrl = photoUrl;
+    this.meme.url = photoUrl;
     this.meme.userId = this.userLogged.id;
     this.meme.dateCreated = new Date();
     this.meme.upVotes = 0;
@@ -68,6 +68,7 @@ export class NewMemeComponent implements OnInit {
     if (this.tags.length > 0) {
       this.meme.tags = this.tags.join(',');
     }
+    this.meme.isVideo = this.file.type.includes('video');
   }
 
 }
