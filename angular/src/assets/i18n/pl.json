@@ -1,0 +1,126 @@
+{
+  "app": {
+    "nav": {
+      "pending": "Oczekujące",
+      "randomMeme": "Losowy mem",
+      "addMeme": "Dodaj mema",
+      "darkMode": "Zmień motyw aplikacji",
+      "changeLanguage": "Zmiana języka"
+    }
+  },
+  "authentication": {
+    "sign-in": {
+      "placeholders": {
+        "title": "Zaloguj się",
+        "username": "Użytkownik",
+        "password": "Hasło",
+        "rememberMe": "Pamiętaj mnie",
+        "signUp": "Zarejestruj się",
+        "forgotPassword": "Nie pamiętasz hasła?",
+        "signIn": "Zaloguj się"
+      },
+      "success": "Zalogowano pomyślnie",
+      "error": "Logowanie nie powiodło się"
+    },
+    "logout": {
+      "success": "Wylogowano pomyślnie",
+      "error": "Błąd podczas próby wylogowania"
+    },
+    "forgot-password": {
+      "placeholders": {
+        "title": "Odzyskiwanie hasła",
+        "resetPassword": "Resetuj hasło"
+      },
+      "startResetProcedureSuccess": "Link do odzyskania hasła został przesłany na wskazany adres e-mail. Zaloguj się, żeby kontynuować proces odzyskiwania hasła",
+      "startResetProcedureError": "Nie udało wygenerować się tokenu resetującego hasła",
+      "userDoesntExist": "Użytkownik z podanym adresem e-mail nie istnieje"
+    },
+    "new-password": {
+      "placeholders": {
+        "title": "Wpisz nowe hasło",
+        "password": "Hasło",
+        "confirmPassword": "Potwierdź hasło",
+        "button": "Zapisz nowe hasło"
+      },
+      "tokenInvalid": "Token stracił swoją ważność, wygeneruj nowy",
+      "updatePasswordSuccess": "Nowe hasło zapisane pomyślnie",
+      "updatePasswordError": "Nie udało zapisać się nowego hasła"
+    },
+    "sign-up": {
+      "placeholders": {
+        "title": "Rejestracja użytkownika",
+        "firstname": "Imię",
+        "lastname": "Nazwisko",
+        "username": "Użytkownik",
+        "password": "Hasło",
+        "confirmPassword": "Potwierdź hasło",
+        "clear": "Wyczyść",
+        "signUp": "Zarejestruj",
+        "errors": {
+          "incorrectEmailFormat": "Nie poprawny format adresu e-mail",
+          "passwordMinLength": "Wymagane minimum 5 znaków",
+          "passwordDoesntMatch": "Hasła muszą do siebie pasować",
+          "usernameExists": "Użytkownik z takim loginem istnieje",
+          "emailExists": "Użytkownik z takim adresem e-mail istnieje"
+        }
+      },
+      "userCreatedSuccess": "Użytkownik został utworzony",
+      "userCreatedError": "Nie udało utworzyć się użytkownika"
+    }
+  },
+  "profile": {
+    "profile-nav": {
+      "settings": "Ustawienia",
+      "yourMemes": "Twoje memy",
+      "logout": "Wyloguj się"
+    },
+    "settings": {
+      "placeholders": {
+        "welcome": "Witaj",
+        "firstname": "Imię",
+        "lastname": "Nazwisko",
+        "changePassword": "Zmień hasło",
+        "updateForm": "Aktualizuj dane",
+        "formNotSaved": "Zmiany nie zapisane, zostaną utracone po odświeżeniu przeglądarki"
+      },
+      "formUpdate": {
+        "success": "Dane zaaktualizowane pomyślnie",
+        "error": "Aktualizacja danych nie powiodła się"
+      },
+      "passwordUpdate": {
+        "success": "Hasło zaaktualizowane pomyślnie",
+        "error": "Aktualizacja hasła nie powiodła się"
+      },
+      "new-password-dialog": {
+        "title": "Aktualizacja hasła",
+        "placeholder": "Nowe hasło",
+        "weakLabel": "Słabe hasło",
+        "mediumLabel": "Przeciętne hasło",
+        "strongLabel": "Bardzo dobre hasło",
+        "promptLabel": "Wprowadź hasło (min. 5 znaków)",
+        "buttonLabel": "Aktualizuj hasło"
+      }
+    }
+  },
+  "meme": {
+    "today": "dziś",
+    "dayAgo": "dzień temu",
+    "daysAgo": "dni temu"
+  },
+  "new-meme": {
+    "placeholders": {
+      "title": "Dodaj mema",
+      "choose": "Wybierz",
+      "memeTitle": "Tytuł mema",
+      "tags": "Tagi (oddzielane przecinkiem)",
+      "button": "Dodaj mema"
+    },
+    "save": {
+      "succes": "Mem został zapisany pomyślnie",
+      "error": "Zapis mema nie powiódł się"
+    }
+  },
+  "handler": {
+    "pageNotFound": "Strona nie znaleziona"
+  }
+}

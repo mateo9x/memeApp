@@ -6,6 +6,7 @@ import {ToastService} from "./toast/toast.services";
 import {UserService} from "./user.service";
 import {Router} from "@angular/router";
 import {TokenService} from "./token.service";
+import {LanguageService} from "./language.service";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ import {TokenService} from "./token.service";
 export class AuthenticateService {
 
   constructor(private http: HttpClient, private toastService: ToastService, private userService: UserService,
-              private router: Router, private tokenService: TokenService) {
+              private router: Router, private tokenService: TokenService, private languageService: LanguageService) {
   }
 
   public authenticateUser(request: AuthenticateRequest) {
@@ -25,15 +26,16 @@ export class AuthenticateService {
           this.userService.getUserLogged().subscribe({
             next: (userResponse) => {
               this.userService.userLogged.next(userResponse);
+              this.setLanguage(userResponse.language);
               this.router.navigate(['']).then(() => {
-                this.toastService.createSuccessToast('Zalogowano pomyślnie');
+                this.toastService.createSuccessToast(this.languageService.getMessage('authentication.sign-in.success'));
               });
             }
           });
         }
       },
       error: () => {
-        this.toastService.createErrorToast('Logowanie nieudane');
+        this.toastService.createErrorToast(this.languageService.getMessage('authentication.sign-in.error'));
       }
     });
   }
@@ -47,14 +49,19 @@ export class AuthenticateService {
           if (errorLoggedOut) {
             window.location.reload();
           } else {
-            this.toastService.createSuccessToast('Wylogowano pomyślnie');
+            this.toastService.createSuccessToast(this.languageService.getMessage('authentication.logout.success'));
           }
         });
       },
       error: () => {
-        this.toastService.createErrorToast('Wylogowanie nieudane');
+        this.toastService.createErrorToast(this.languageService.getMessage('authentication.logout.error'));
       }
     });
+  }
+
+  private setLanguage(language: string) {
+    this.languageService.setUserLanguage(language);
+    this.languageService.saveLanguage(language);
   }
 
 }

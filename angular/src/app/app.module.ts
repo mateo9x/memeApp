@@ -2,7 +2,7 @@ import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import {AppInterceptor} from "./config/app.interceptor";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SignInComponent} from "./component/authenticate/sign-in/sign-in.component";
@@ -36,6 +36,12 @@ import {
 } from "./component/profile/settings/new-password-dialog/new-password-dialog.component";
 import {DialogService, DynamicDialogModule} from "primeng/dynamicdialog";
 import {DropdownModule} from "primeng/dropdown";
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -73,7 +79,14 @@ import {DropdownModule} from "primeng/dropdown";
     PasswordModule,
     ChipsModule,
     DynamicDialogModule,
-    DropdownModule
+    DropdownModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [MessageService, { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }, LoginGuard, AnonymousGuard, DialogService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -1,41 +1,53 @@
-<h3> Rejestracja użytkownika </h3>
+<h3>{{'authentication.sign-up.placeholders.title' | translate}}</h3>
 
 <form [formGroup]="form" novalidate>
-  <div class="input">
-    <input pInputText type="text" formControlName="firstname" placeholder="Imię"/>
-  </div>
 
   <div class="input">
-    <input pInputText type="text" formControlName="lastname" placeholder="Nazwisko"/>
-  </div>
-
-  <div class="input">
-    <input pInputText type="text" formControlName="username" placeholder="Login" (focusout)="checkIfUserWithUsernameExists()"/>
+    <input pInputText type="text" formControlName="username"
+           placeholder="{{'authentication.sign-up.placeholders.username' | translate}}"
+           (focusout)="checkIfUserWithUsernameExists()"/>
     <span class="span-error" *ngIf="username?.errors?.['userExists']">{{this.username?.getError('userExists')}}</span>
   </div>
 
   <div class="input">
-    <input pInputText type="text" formControlName="email" placeholder="E-mail" (focusout)="checkIfUserWithEmailExists()"/>
-    <span class="span-error" *ngIf="email?.errors?.email">Nie prawidłowy format adresu e-mail, przykładowo: mail@mail.pl</span>
+    <input pInputText type="text" formControlName="email" placeholder="E-mail"
+           (focusout)="checkIfUserWithEmailExists()"/>
+    <span class="span-error"
+          *ngIf="email?.errors?.email">{{'authentication.sign-up.placeholders.errors.incorrectEmailFormat' | translate}}</span>
     <span class="span-error" *ngIf="email?.errors?.['emailExists']">{{this.email?.getError('emailExists')}}</span>
   </div>
 
   <div class="input">
-    <input pInputText type="password" formControlName="password" placeholder="Hasło"/>
-    <span class="span-error" *ngIf="password?.errors?.minlength">Hasło musi mieć minimum 5 znaków!</span>
+    <input pInputText type="text" formControlName="firstname"
+           placeholder="{{'authentication.sign-up.placeholders.firstname' | translate}}"/>
   </div>
 
   <div class="input">
-    <input pInputText type="password" formControlName="password2" placeholder="Potwierdź hasło"/>
-    <span class="span-error" *ngIf="!doesBothPasswordMatches()">Hasła muszą być takie same!</span>
+    <input pInputText type="text" formControlName="lastname"
+           placeholder="{{'authentication.sign-up.placeholders.lastname' | translate}}"/>
+  </div>
+
+  <div class="input">
+    <input pInputText type="password" formControlName="password"
+           placeholder="{{'authentication.sign-up.placeholders.password' | translate}}"/>
+    <span class="span-error"
+          *ngIf="password?.errors?.minlength">{{'authentication.sign-up.placeholders.errors.passwordMinLength' | translate}}</span>
+  </div>
+
+  <div class="input">
+    <input pInputText type="password" formControlName="password2"
+           placeholder="{{'authentication.sign-up.placeholders.confirmPassword' | translate}}"/>
+    <span class="span-error"
+          *ngIf="!doesBothPasswordMatches()">{{'authentication.sign-up.placeholders.errors.passwordDoesntMatch' | translate}}</span>
   </div>
 
   <div class="button-container">
-    <button pButton type="button" class="p-button-raised p-button-rounded" (click)="clearForm()">Wyczyść
+    <button pButton type="button" class="p-button-raised p-button-rounded"
+            (click)="clearForm()">{{'authentication.sign-up.placeholders.clear' | translate}}
     </button>
 
     <button pButton type="button" class="p-button-raised p-button-rounded" (click)="signUp()"
-            [disabled]="!isFormValid() || !doesBothPasswordMatches()">Zarejestruj się
+            [disabled]="!isFormValid() || !doesBothPasswordMatches()">{{'authentication.sign-up.placeholders.signUp' | translate}}
     </button>
   </div>
 </form>

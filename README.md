@@ -11,11 +11,11 @@ Meme app - made as an opportunity to browse memes uploaded daily by users.
 - Forgot password
 - Add new meme
 - User profile update
+- Internalization (EN/PL)
 
 ## TODO functionalities
 - Movies
 - Meme comments
-- Internalization
 - User authorities and provide permissions for some actions
 
 ## How to run

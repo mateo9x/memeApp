@@ -1,0 +1,126 @@
+{
+  "app": {
+    "nav": {
+      "pending": "Pending",
+      "randomMeme": "Random meme",
+      "addMeme": "Add meme",
+      "darkMode": "Change app theme",
+      "changeLanguage": "Language change"
+    }
+  },
+  "authentication": {
+    "sign-in": {
+      "placeholders": {
+        "title": "Sign in",
+        "username": "Username",
+        "password": "Password",
+        "rememberMe": "Remember me",
+        "signUp": "Sign up",
+        "forgotPassword": "Forgot password?",
+        "signIn": "Sign in"
+      },
+      "success": "Signed in successfully",
+      "error": "Error while signing in"
+    },
+    "logout": {
+      "success": "Logged out successfully",
+      "error": "Error while logging out"
+    },
+    "forgot-password": {
+      "placeholders": {
+        "title": "Recovering passowrd",
+        "resetPassword": "Reset password"
+      },
+      "startResetProcedureSuccess": "A password recovery link has been sent to the e-mail address provided. Log in to continue the password recovery process",
+      "startResetProcedureError": "Failed to generate password reset token",
+      "userDoesntExist": "The user with the given e-mail address does not exist"
+    },
+    "new-password": {
+      "placeholders": {
+        "title": "Enter new password",
+        "password": "Password",
+        "confirmPassword": "Confirm password",
+        "button": "Save new password"
+      },
+      "tokenInvalid": "Token expired, create new one",
+      "updatePasswordSuccess": "Password has been saved",
+      "updatePasswordError": "Error while saving password"
+    },
+    "sign-up": {
+      "placeholders": {
+        "title": "Register user",
+        "firstname": "Firstname",
+        "lastname": "Lastname",
+        "username": "Username",
+        "password": "Password",
+        "confirmPassword": "Confirm password",
+        "clear": "Clear",
+        "signUp": "Register",
+        "errors": {
+          "incorrectEmailFormat": "Incorrect email format",
+          "passwordMinLength": "Required min 5 chars",
+          "passwordDoesntMatch": "Passwords must match",
+          "usernameExists": "User with that username already exists",
+          "emailExists": "User with that email already exists"
+        }
+      },
+      "userCreatedSuccess": "User has been created",
+      "userCreatedError": "Error while creating user"
+    }
+  },
+  "profile": {
+    "profile-nav": {
+      "settings": "Settings",
+      "yourMemes": "Your memes",
+      "logout": "Log out"
+    },
+    "settings": {
+      "placeholders": {
+        "welcome": "Welcome",
+        "firstname": "Firstname",
+        "lastname": "Lastname",
+        "changePassword": "Change password",
+        "updateForm": "Update data",
+        "formNotSaved": "Changes not saved will be lost after refreshing the browser"
+      },
+      "formUpdate": {
+        "success": "Data updated successfully",
+        "error": "Error while updating data"
+      },
+      "passwordUpdate": {
+        "success": "Password updated successfully",
+        "error": "Error while updating password"
+      },
+      "new-password-dialog": {
+        "title": "Password update",
+        "placeholder": "New password",
+        "weakLabel": "Weak password",
+        "mediumLabel": "Average password",
+        "strongLabel": "Very good password",
+        "promptLabel": "Enter password (min. 5 chars)",
+        "buttonLabel": "Update password"
+      }
+    }
+  },
+  "meme": {
+    "today": "today",
+    "dayAgo": "day ago",
+    "daysAgo": "days ago"
+  },
+  "new-meme": {
+    "placeholders": {
+      "title": "Add meme",
+      "choose": "Choose",
+      "memeTitle": "Meme title",
+      "tags": "Tags (seperated by comma)",
+      "button": "Add meme"
+    },
+    "save": {
+      "succes": "Meme has been created",
+      "error": "Error while saving meme"
+    }
+  },
+  "handler": {
+    "pageNotFound": "Page not found"
+  }
+}

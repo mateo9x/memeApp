@@ -5,6 +5,7 @@ import {ToastService} from "../../../service/toast/toast.services";
 import {Router} from "@angular/router";
 import {NewPasswordFormService} from "./new-password.form.service";
 import {User} from "../../../model/user";
+import {LanguageService} from "../../../service/language.service";
 
 @Component({
   selector: 'new-password',
@@ -17,7 +18,7 @@ export class NewPasswordComponent implements OnInit {
   user: User;
 
   constructor(private userService: UserService, private formService: NewPasswordFormService, private toastService: ToastService,
-              private router: Router) {
+              private router: Router, private languageService: LanguageService) {
     this.form = this.formService.getFormGroup();
   }
 
@@ -29,7 +30,7 @@ export class NewPasswordComponent implements OnInit {
         if (response) {
           this.user = response;
         } else {
-          this.toastService.createWarnToast('Token stracił swoją ważność, wygeneruj nowy');
+          this.toastService.createWarnToast(this.languageService.getMessage('authentication.new-password.tokenInvalid'));
         }
       }
     });
@@ -40,8 +41,11 @@ export class NewPasswordComponent implements OnInit {
     this.userService.finishResetPasswordProcedure(data).subscribe({
       next: () => {
         this.router.navigate(['']).then(() => {
-          this.toastService.createSuccessToast('Nowe hasło zapisane pomyślnie');
+          this.toastService.createSuccessToast(this.languageService.getMessage('authentication.new-password.updatePasswordSuccess'));
         });
+      },
+      error: () => {
+        this.toastService.createErrorToast(this.languageService.getMessage('authentication.new-password.updatePasswordError'));
       }
     });
   }
