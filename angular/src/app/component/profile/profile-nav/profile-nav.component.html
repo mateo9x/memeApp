@@ -1,4 +1,4 @@
-<img [src]="user.photoUrl ? user.photoUrl : defaultPhotoUrl" alt="" [pTooltip]="user.username" tooltipPosition="bottom"
+<img [src]="getIcon()" alt="" [pTooltip]="user.username" tooltipPosition="bottom"
      (click)="toggleExpanded()">
 
 <ng-container *ngIf="expanded">

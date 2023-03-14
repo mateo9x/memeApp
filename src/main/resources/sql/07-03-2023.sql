@@ -13,4 +13,4 @@ create table users
 
 insert into users (id, first_name, last_name, username, email, password, photo_url)
     values (1, 'admin', 'admin', 'admin', 'admin@admin.com', '$2a$10$.WOAo0ZJnJth6oiTkrYh.eGqEexkR77182Ck.99wZKKPMxbZBhhe6', null),
-           (2, 'mateusz', 'xxx', 'matpala', 'mail@mail.com', '$2a$10$.WOAo0ZJnJth6oiTkrYh.eGqEexkR77182Ck.99wZKKPMxbZBhhe6' , '/assets/profile/2/avatar.png');
+           (2, 'mateusz', 'xxx', 'matpala', 'mail@mail.com', '$2a$10$.WOAo0ZJnJth6oiTkrYh.eGqEexkR77182Ck.99wZKKPMxbZBhhe6' , 'profile/2/avatar.png');

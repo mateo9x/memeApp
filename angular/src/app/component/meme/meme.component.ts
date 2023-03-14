@@ -52,10 +52,7 @@ export class MemeComponent {
   }
 
   getUserAvatar() {
-    if (this.meme && this.meme.userPhotoUrl) {
-      return this.meme.userPhotoUrl;
-    }
-    return this.defaultUserUrl;
+    return this.fileService.getPhoto(this.meme.userIconFile);
   }
 
   getMemePhoto() {

@@ -29,6 +29,7 @@ public class MemeServiceImpl implements MemeService {
         return memeRepository.findAllByApprovedIsTrue().stream()
                 .map(memeMapper::toDTO)
                 .map(this::getFileForMeme)
+                .map(this::getUserIconFileForMeme)
                 .sorted(Comparator.comparing(MemeDTO::getDateApproved).reversed())
                 .collect(Collectors.toList());
     }
@@ -38,6 +39,7 @@ public class MemeServiceImpl implements MemeService {
         return memeRepository.findAllByApprovedIsFalseOrApprovedIsNull().stream()
                 .map(memeMapper::toDTO)
                 .map(this::getFileForMeme)
+                .map(this::getUserIconFileForMeme)
                 .sorted(Comparator.comparing(MemeDTO::getDateCreated).reversed())
                 .collect(Collectors.toList());
     }
@@ -47,6 +49,7 @@ public class MemeServiceImpl implements MemeService {
         return memeRepository.findAllByUserId(userId).stream()
                 .map(memeMapper::toDTO)
                 .map(this::getFileForMeme)
+                .map(this::getUserIconFileForMeme)
                 .sorted(Comparator.comparing(MemeDTO::getDateCreated).reversed())
                 .collect(Collectors.toList());
     }
@@ -56,6 +59,7 @@ public class MemeServiceImpl implements MemeService {
         return memeRepository.findAllByTagsContaining(tag).stream()
                 .map(memeMapper::toDTO)
                 .map(this::getFileForMeme)
+                .map(this::getUserIconFileForMeme)
                 .sorted(Comparator.comparing(MemeDTO::getDateCreated).reversed())
                 .collect(Collectors.toList());
     }
@@ -72,6 +76,7 @@ public class MemeServiceImpl implements MemeService {
         return memeRepository.findById(memeId)
                 .map(memeMapper::toDTO)
                 .map(this::getFileForMeme)
+                .map(this::getUserIconFileForMeme)
                 .orElse(null);
     }
 
@@ -83,6 +88,7 @@ public class MemeServiceImpl implements MemeService {
         return memeRepository.findById(userId)
                 .map(memeMapper::toDTO)
                 .map(this::getFileForMeme)
+                .map(this::getUserIconFileForMeme)
                 .orElse(null);
     }
 
@@ -98,6 +104,11 @@ public class MemeServiceImpl implements MemeService {
 
     private MemeDTO getFileForMeme(MemeDTO memeDTO) {
         memeDTO.setFile(fileService.getMemeFromResourceFolder(memeDTO.getUrl()));
+        return memeDTO;
+    }
+
+    private MemeDTO getUserIconFileForMeme(MemeDTO memeDTO) {
+        memeDTO.setUserIconFile(fileService.getMemeAuthorIconFromResourceFolder(memeDTO.getUserPhotoUrl()));
         return memeDTO;
     }
 }

@@ -18,5 +18,6 @@ public class UserDTO {
     private String photoUrl;
     private String resetToken;
     private String language;
+    private byte[] iconFile;
 
 }

@@ -25,5 +25,6 @@ public class MemeDTO {
     private String tags;
     private byte[] file;
     private Boolean isVideo;
+    private byte[] userIconFile;
 }
 

@@ -13,4 +13,5 @@ export class Meme {
   tags?: string;
   file: any;
   isVideo: boolean;
+  userIconFile: any;
 }

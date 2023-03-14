@@ -9,4 +9,5 @@ export class User {
   photoUrl: string;
   resetToken: string;
   language: string;
+  iconFile: any;
 }

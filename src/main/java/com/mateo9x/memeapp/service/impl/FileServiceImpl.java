@@ -32,6 +32,21 @@ public class FileServiceImpl implements FileService {
         }
     }
 
+    public byte[] getMemeAuthorIconFromResourceFolder(String fileName) {
+        try {
+            File file = ResourceUtils.getFile("classpath:" + fileName);
+            return Files.readAllBytes(file.toPath());
+        } catch (Exception e) {
+            try {
+                File imageNotFound = ResourceUtils.getFile("classpath:profile-not-found.png");
+                return Files.readAllBytes(imageNotFound.toPath());
+            } catch (IOException ex) {
+                log.error("Can't parse file path to byte[] !");
+                return null;
+            }
+        }
+    }
+
     @Override
     public void saveMultipartFileInResourceFolder(String fileName, MultipartFile multipartFile) {
         try {
