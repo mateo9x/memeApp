@@ -105,7 +105,8 @@
   "meme": {
     "today": "dziś",
     "dayAgo": "dzień temu",
-    "daysAgo": "dni temu"
+    "daysAgo": "dni temu",
+    "notFound": "Mem nie znaleziony"
   },
   "new-meme": {
     "placeholders": {
@@ -122,5 +123,16 @@
   },
   "handler": {
     "pageNotFound": "Strona nie znaleziona"
+  },
+  "meme-comment": {
+    "placeholders": {
+      "addComment": "Dodaj komentarz",
+      "notLogged": "Zaloguj się w celu dodania komentarza"
+    },
+    "errors": {
+      "minLength": "Minimalna długość komentarza to 10 znaków"
+    },
+    "commentCreated": "Komentarz dodany pomyślnie",
+    "commentNotCreated": "Komentarz nie został dodany"
   }
 }

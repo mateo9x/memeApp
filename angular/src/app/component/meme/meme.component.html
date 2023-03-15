@@ -1,25 +1,37 @@
-<div class="meme-container" *ngIf="meme">
-  <div class="meme-author"><img class="user-img" [src]="getUserAvatar()" alt=""/>
-    <span class="username" [routerLink]="'/user/' + meme.userId">{{meme.userName}}</span>
-    <span class="meme-time">{{calcTimeSinceMemCreated()}}</span>
+<ng-container *ngIf="meme;else memeNotFound">
+
+  <div class="meme-container">
+    <div class="meme-author"><img class="user-img" [src]="getUserAvatar()" alt=""/>
+      <span class="username" [routerLink]="'/user/' + meme.userId">{{meme.userName}}</span>
+      <span class="meme-time">{{calcTimeSinceMemCreated()}}</span>
+    </div>
+    <span class="meme-title" [routerLink]="'/meme/' + meme.id">{{meme.title}}</span>
+    <img class="meme-img" alt="" [src]="getMemePhoto()" [routerLink]="'/meme/' + meme.id" *ngIf="!meme.isVideo">
+    <video class="meme-img" controls *ngIf="meme.isVideo">
+      <source [src]="getMemeVideo()" type="video/mp4"/>
+      Browser not supported
+    </video>
+    <div class="meme-tags">
+      <ng-container *ngFor="let tag of getMemeTags()">
+        <div class="meme-tag" [routerLink]="'/tags/' + tag">#{{tag}}</div>
+      </ng-container>
+    </div>
+    <div class="meme-buttons">
+      <button pButton type="button" [disabled]="!user" (click)="updateMemeUpVote()">
+        <fa-icon icon="arrow-up"/>
+        {{meme.upVotes}}</button>
+      <button pButton type="button" [disabled]="!user" (click)="updateMemeDownVote()">
+        <fa-icon icon="arrow-down"/>
+        {{meme.downVotes}}</button>
+    </div>
   </div>
-  <span class="meme-title" [routerLink]="'/meme/' + meme.id">{{meme.title}}</span>
-  <img class="meme-img" alt="" [src]="getMemePhoto()" [routerLink]="'/meme/' + meme.id" *ngIf="!meme.isVideo">
-  <video class="meme-img" controls *ngIf="meme.isVideo">
-    <source [src]="getMemeVideo()" type="video/mp4"/>
-    Browser not supported
-  </video>
-  <div class="meme-tags">
-    <ng-container *ngFor="let tag of getMemeTags()">
-      <div class="meme-tag" [routerLink]="'/tags/' + tag">#{{tag}}</div>
-    </ng-container>
+
+</ng-container>
+
+<ng-template #memeNotFound>
+
+  <div class="meme-container">
+    <h3>{{'meme.notFound' | translate}}</h3>
   </div>
-  <div class="meme-buttons">
-    <button pButton type="button" [disabled]="!user" (click)="updateMemeUpVote()">
-      <fa-icon icon="arrow-up"/>
-      {{meme.upVotes}}</button>
-    <button pButton type="button" [disabled]="!user" (click)="updateMemeDownVote()">
-      <fa-icon icon="arrow-down"/>
-      {{meme.downVotes}}</button>
-  </div>
-</div>
+
+</ng-template>

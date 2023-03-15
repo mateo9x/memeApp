@@ -44,7 +44,7 @@ export class MemeListComponent implements OnInit {
   }
 
   getUserLogged() {
-    this.userService.userLogged.subscribe({
+    this.userService.getUserLogged().subscribe({
       next: (response) => {
         this.userLogged = response;
       }
