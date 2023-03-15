@@ -1,0 +1,38 @@
+<div class="meme-new-comment">
+
+  <ng-container *ngIf="user;else noUser">
+    <div class="text-area-container">
+    <textarea [rows]="3" [maxlength]="255" [minlength]="1" pInputTextarea [autoResize]="true"
+              [(ngModel)]="comment"></textarea>
+      <span class="span-error" *ngIf="comment.length > 0 && comment.length <= 10">{{'meme-comment.errors.minLength' | translate}}</span>
+    </div>
+
+    <div class="button-container">
+      <button pButton type="button" [disabled]="comment.length <= 10" (click)="addComment()">{{'meme-comment.placeholders.addComment' | translate}}</button>
+    </div>
+  </ng-container>
+
+  <ng-template #noUser>
+    <h3>{{'meme-comment.placeholders.notLogged' | translate}}</h3>
+  </ng-template>
+
+</div>
+
+<ng-container *ngFor="let memeComment of memeComments">
+
+  <div class="meme-comment">
+    <div class="meme-comment-first-row">
+      <div class="author">
+        <img class="user-img" [src]="getMemeCommentUserAvatar(memeComment)" alt=""/>
+        <span [routerLink]="'/user/' + memeComment.userId">{{memeComment.userName}}</span>
+      </div>
+      <div class="date">
+        <span>{{getDateTransformed(memeComment.dateCreated)}}</span>
+      </div>
+    </div>
+    <div class="meme-comment-second-row">
+      <span>{{memeComment.comment}}</span>
+    </div>
+  </div>
+
+</ng-container>

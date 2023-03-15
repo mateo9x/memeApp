@@ -12,9 +12,9 @@ Meme app - made as an opportunity to browse memes uploaded daily by users.
 - Add new meme
 - User profile update
 - Internalization (EN/PL)
+- Meme comments
 
 ## TODO functionalities
-- Meme comments
 - User authorities and provide permissions for some actions
 
 ## How to run

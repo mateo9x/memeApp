@@ -15,7 +15,8 @@ export class MemeDetailComponent implements OnInit {
   meme: Meme;
   userLogged: User;
 
-  constructor(private activatedRoute: ActivatedRoute, private memeService: MemeService, private userService: UserService) {
+  constructor(private activatedRoute: ActivatedRoute, private memeService: MemeService,
+              private userService: UserService) {
   }
 
   ngOnInit() {
@@ -49,7 +50,7 @@ export class MemeDetailComponent implements OnInit {
   }
 
   getUserLogged() {
-    this.userService.userLogged.subscribe({
+    this.userService.getUserLogged().subscribe({
       next: (response) => {
         this.userLogged = response;
       }

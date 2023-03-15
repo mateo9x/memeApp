@@ -38,6 +38,8 @@ import {DialogService, DynamicDialogModule} from "primeng/dynamicdialog";
 import {DropdownModule} from "primeng/dropdown";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import {MemeCommentComponent} from "./component/meme-comment/meme-comment.component";
+import {InputTextareaModule} from "primeng/inputtextarea";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -58,7 +60,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     PageNotFoundComponent,
     NewMemeComponent,
     ProfileSettingsComponent,
-    NewPasswordDialogComponent
+    NewPasswordDialogComponent,
+    MemeCommentComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +89,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    InputTextareaModule
   ],
   providers: [MessageService, { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }, LoginGuard, AnonymousGuard, DialogService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

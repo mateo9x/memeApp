@@ -1,1 +1,3 @@
 <meme [meme]="meme" [user]="userLogged"></meme>
+
+<meme-comment [memeId]="meme.id" *ngIf="meme"></meme-comment>

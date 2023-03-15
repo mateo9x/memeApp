@@ -1,0 +1,73 @@
+.meme-new-comment {
+  display: grid;
+  justify-content: center;
+  padding: 30px 0;
+  width: 600px;
+  max-height: 600px;
+  margin: auto;
+}
+
+.text-area-container {
+  width: 600px;
+  padding: 10px 0;
+}
+
+::ng-deep {
+  .p-inputtextarea {
+    width: 100%!important;
+    max-width: 100% !important;
+  }
+}
+
+.meme-comment {
+  display: grid;
+  justify-content: center;
+  padding: 10px 0;
+  width: 600px;
+  height: auto;
+  max-height: 600px;
+  margin: auto auto 1px;
+  border: 1px solid var(--main-meme-button-color-hover);
+  border-radius: 10px;
+}
+
+.meme-comment-first-row {
+  display: grid;
+  width: inherit;
+  grid-template-columns: 1fr 1fr;
+}
+
+.meme-comment-second-row {
+  display: grid;
+  width: inherit;
+  justify-content: left;
+  padding: 10px 5px;
+  word-wrap: break-word;
+}
+
+.meme-comment-second-row > span {
+  overflow: hidden;
+  text-align: left;
+}
+
+.author {
+  display:flex;
+}
+
+.author > span:hover {
+  cursor: pointer;
+  color: var(--main-text-color-hover);
+}
+
+.date {
+  display: flex;
+  justify-content: right;
+  padding: 0 10px;
+}
+
+.user-img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50px;
+  margin: 0 10px;
+}

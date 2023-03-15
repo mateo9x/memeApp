@@ -105,7 +105,8 @@
   "meme": {
     "today": "today",
     "dayAgo": "day ago",
-    "daysAgo": "days ago"
+    "daysAgo": "days ago",
+    "notFound": "Meme not found"
   },
   "new-meme": {
     "placeholders": {
@@ -122,5 +123,16 @@
   },
   "handler": {
     "pageNotFound": "Page not found"
+  },
+  "meme-comment": {
+    "placeholders": {
+      "addComment": "Add comment",
+      "notLogged": "Sign in to add comment"
+    },
+    "errors": {
+      "minLength": "Min length of comment is 10 chars"
+    },
+    "commentCreated": "Comment added successfully",
+    "commentNotCreated": "Error while adding comment"
   }
 }

@@ -17,13 +17,11 @@ export class MemeComponent {
   @Input()
   user: User;
 
-  defaultUserUrl = '/assets/profile-not-found.png';
-
-  constructor(private memeService: MemeService, private fileService: FileService, private languageService: LanguageService) {
+  constructor(private memeService: MemeService, private fileService: FileService,
+              private languageService: LanguageService) {
   }
 
   updateMemeUpVote() {
-    console.log(this.meme)
     this.meme.upVotes = this.meme.upVotes + 1;
     this.memeService.updateMeme(this.meme).subscribe({});
   }
