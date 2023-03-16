@@ -40,6 +40,7 @@ import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {MemeCommentComponent} from "./component/meme-comment/meme-comment.component";
 import {InputTextareaModule} from "primeng/inputtextarea";
+import {ProgressSpinnerModule} from "primeng/progressspinner";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -63,35 +64,36 @@ export function HttpLoaderFactory(http: HttpClient) {
     NewPasswordDialogComponent,
     MemeCommentComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserModule,
-    FormsModule,
-    InputTextModule,
-    ButtonModule,
-    ToastModule,
-    CheckboxModule,
-    IconModule,
-    FontAwesomeModule,
-    TooltipModule,
-    FileUploadModule,
-    PasswordModule,
-    ChipsModule,
-    DynamicDialogModule,
-    DropdownModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
-    InputTextareaModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserModule,
+        FormsModule,
+        InputTextModule,
+        ButtonModule,
+        ToastModule,
+        CheckboxModule,
+        IconModule,
+        FontAwesomeModule,
+        TooltipModule,
+        FileUploadModule,
+        PasswordModule,
+        ChipsModule,
+        DynamicDialogModule,
+        DropdownModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
+        InputTextareaModule,
+        ProgressSpinnerModule
+    ],
   providers: [MessageService, { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }, LoginGuard, AnonymousGuard, DialogService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

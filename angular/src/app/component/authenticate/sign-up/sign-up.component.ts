@@ -5,6 +5,7 @@ import {UserService} from "../../../service/user.service";
 import {ToastService} from "../../../service/toast/toast.services";
 import {Router} from "@angular/router";
 import {LanguageService} from "../../../service/language.service";
+import {SpinnerService} from "../../../service/spinner/spinner.service";
 
 @Component({
   selector: 'sign-up',
@@ -17,20 +18,23 @@ export class SignUpComponent {
   languages = [{label: 'Polski', value: 'pl'}, {label: 'English', value: 'en'}];
 
   constructor(private userService: UserService, private formService: SignUpFormService, private toastService: ToastService,
-              private router: Router, private languageService: LanguageService) {
+              private router: Router, private languageService: LanguageService, private spinnerService: SpinnerService) {
     this.form = this.formService.getFormGroup();
   }
 
   signUp() {
+    this.spinnerService.setSpinnerLoading(true);
     const request = this.formService.convertFormToUser(this.form);
     this.userService.saveUser(request).subscribe({
       next: () => {
         this.router.navigate(['']).then(() => {
           this.formService.clearForm(this.form);
+          this.spinnerService.setSpinnerLoading(false);
           this.toastService.createSuccessToast(this.languageService.getMessage('authentication.sign-up.userCreatedSuccess'));
         });
       },
       error: () => {
+        this.spinnerService.setSpinnerLoading(false);
         this.toastService.createErrorToast(this.languageService.getMessage('authentication.sign-up.userCreatedError'));
       }
     });
