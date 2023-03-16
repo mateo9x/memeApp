@@ -127,7 +127,8 @@
   "meme-comment": {
     "placeholders": {
       "addComment": "Dodaj komentarz",
-      "notLogged": "Zaloguj się w celu dodania komentarza"
+      "notLogged": "Zaloguj się w celu dodania komentarza",
+      "textArea": "Wpisz swój komentarz..."
     },
     "errors": {
       "minLength": "Minimalna długość komentarza to 10 znaków"

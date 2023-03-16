@@ -3,7 +3,7 @@
   <ng-container *ngIf="user;else noUser">
     <div class="text-area-container">
     <textarea [rows]="3" [maxlength]="255" [minlength]="1" pInputTextarea [autoResize]="true"
-              [(ngModel)]="comment"></textarea>
+              [(ngModel)]="comment" placeholder="{{'meme-comment.placeholders.textArea' | translate}}"></textarea>
       <span class="span-error" *ngIf="comment.length > 0 && comment.length <= 10">{{'meme-comment.errors.minLength' | translate}}</span>
     </div>
 

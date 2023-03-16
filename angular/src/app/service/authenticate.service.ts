@@ -25,7 +25,7 @@ export class AuthenticateService {
           this.tokenService.saveToken(token, request.rememberMe);
           this.userService.getUserLogged().subscribe({
             next: (userResponse) => {
-              this.userService.userLogged.next(userResponse);
+              this.userService.setUserLogged(userResponse);
               this.setLanguage(userResponse.language);
               this.router.navigate(['']).then(() => {
                 this.toastService.createSuccessToast(this.languageService.getMessage('authentication.sign-in.success'));
@@ -44,7 +44,7 @@ export class AuthenticateService {
     this.http.post<any>(`${APP_BASE_URL}/logout`, {}).subscribe({
       next: () => {
         this.tokenService.removeToken();
-        this.userService.userLogged.next(null);
+        this.userService.setUserLogged(null);
         this.router.navigate(['']).then(() => {
           if (errorLoggedOut) {
             window.location.reload();

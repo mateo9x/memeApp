@@ -35,7 +35,7 @@ export class AppComponent implements OnInit, OnDestroy {
     if (token) {
       this.userService.getUserLogged().subscribe({
         next: (response) => {
-          this.userService.userLogged.next(response);
+          this.userService.setUserLogged(response);
           if (response) {
             this.languageService.setUserLanguage(response.language);
           }

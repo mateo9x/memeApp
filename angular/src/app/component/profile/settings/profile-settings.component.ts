@@ -29,7 +29,7 @@ export class ProfileSettingsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUserLogged().subscribe({
+    this.userService.userLogged.subscribe({
       next: (response) => {
         this.user = response;
         this.languageService.setUserLanguage(response.language);

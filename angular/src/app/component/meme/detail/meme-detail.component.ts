@@ -50,7 +50,7 @@ export class MemeDetailComponent implements OnInit {
   }
 
   getUserLogged() {
-    this.userService.getUserLogged().subscribe({
+    this.userService.userLogged.subscribe({
       next: (response) => {
         this.userLogged = response;
       }

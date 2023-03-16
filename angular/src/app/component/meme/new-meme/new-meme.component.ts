@@ -25,7 +25,7 @@ export class NewMemeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUserLogged().subscribe({
+    this.userService.userLogged.subscribe({
       next: (response) => {
         this.userLogged = response;
       }
@@ -58,9 +58,7 @@ export class NewMemeComponent implements OnInit {
   }
 
   prepareMemeData() {
-    const photoUrl = `memes/${this.userLogged.id}/$REPLACE_MEM_ID_${this.file.name}`;
-    this.meme.title = this.file.name;
-    this.meme.url = photoUrl;
+    this.meme.url = `memes/${this.userLogged.id}/$REPLACE_MEM_ID_${this.file.name}`;
     this.meme.userId = this.userLogged.id;
     this.meme.dateCreated = new Date();
     this.meme.upVotes = 0;

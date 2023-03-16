@@ -44,7 +44,7 @@ export class MemeCommentComponent implements OnChanges {
   }
 
   getUser() {
-    this.userService.getUserLogged().subscribe({
+    this.userService.userLogged.subscribe({
       next: (response) => {
         this.user = response;
       }
@@ -54,7 +54,7 @@ export class MemeCommentComponent implements OnChanges {
   addComment() {
     const request = this.prepareNewCommentRequest();
     this.memeCommentService.createMemeComment(request).subscribe({
-      next: (response) => {
+      next: () => {
         this.comment = '';
         this.toastService.createSuccessToast(this.languageService.getMessage('meme-comment.commentCreated'));
       },
