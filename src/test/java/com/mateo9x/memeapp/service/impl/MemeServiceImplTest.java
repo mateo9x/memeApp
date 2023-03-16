@@ -5,8 +5,8 @@ import com.mateo9x.memeapp.entity.Meme;
 import com.mateo9x.memeapp.entity.User;
 import com.mateo9x.memeapp.mapper.MemeMapper;
 import com.mateo9x.memeapp.repository.MemeRepository;
-import io.jsonwebtoken.lang.Assert;
-import org.junit.jupiter.api.BeforeEach;
+import com.mateo9x.memeapp.service.FileService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -14,10 +14,13 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
+import java.util.Random;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import static org.mockito.MockitoAnnotations.openMocks;
+import static org.mockito.Mockito.withSettings;
 
 @ExtendWith(MockitoExtension.class)
 public class MemeServiceImplTest {
@@ -28,38 +31,40 @@ public class MemeServiceImplTest {
     private static final LocalDateTime MEME_DATE_CREATED = LocalDateTime.of(2023,2,2,2,2);
     private static final Long MEME_AUTHOR_ID = 1L;
 
-    @BeforeEach
-    void setUp() {
-        openMocks(this);
-    }
-
     @Mock
     private MemeRepository memeRepository;
 
     @Mock
     private MemeMapper memeMapper;
 
+    @Mock
+    private FileService fileService;
+
+    private static final Random random = mock(Random.class, withSettings().withoutAnnotations());
+
     @InjectMocks MemeServiceImpl memeService;
 
     @Test
-    public void shouldUpVoteMemAndChangeMemToBeApproved() {
+    public void shouldGetRandomMeme() {
         //when
-        MemeDTO memeDTO = prepareMemeDTO();
-        memeDTO.setUpVotes(100);
-        when(memeMapper.toEntity(any())).thenReturn(prepareMeme());
-        when(memeRepository.save(any())).thenReturn(prepareMeme());
+        Meme meme = prepareMeme();
+        when(memeRepository.findMaxIdFromMeme()).thenReturn(2L);
+        when(random.nextLong(1L, 2L)).thenReturn(1L);
+        when(memeRepository.findById(any())).thenReturn(Optional.of(meme));
+        when(memeMapper.toDTO(meme)).thenReturn(prepareMemeDTO());
+
         //given
-//        MemeDTO memeSaved = memeService.upVoteMem(memeDTO);
+        MemeDTO memeDTO = memeService.getRandomMeme();
 
         //then
-//        Assert.isTrue(memeSaved.getApproved());
+        Assertions.assertEquals(memeDTO.getId(), meme.getId());
     }
 
     private MemeDTO prepareMemeDTO() {
         MemeDTO memeDTO = new MemeDTO();
         memeDTO.setId(MEME_ID);
         memeDTO.setTitle(MEME_TITLE);
-        memeDTO.setPhotoUrl(MEME_PHOTO_URL);
+        memeDTO.setUrl(MEME_PHOTO_URL);
         memeDTO.setDateCreated(MEME_DATE_CREATED);
         memeDTO.setUserId(MEME_AUTHOR_ID);
         memeDTO.setUpVotes(0);
@@ -70,7 +75,7 @@ public class MemeServiceImplTest {
         Meme meme = new Meme();
         meme.setId(MEME_ID);
         meme.setTitle(MEME_TITLE);
-        meme.setPhotoUrl(MEME_PHOTO_URL);
+        meme.setUrl(MEME_PHOTO_URL);
         meme.setDateCreated(MEME_DATE_CREATED);
         meme.setUser(new User());
         meme.setUpVotes(0);
