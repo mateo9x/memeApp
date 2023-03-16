@@ -13,4 +13,8 @@ public class AdditionalAppProperties {
     @Value("${app.frontend.url}")
     @NotNull
     private String appFrontendUrl;
+
+    @Value("${app.dns}")
+    @NotNull
+    private String appDNS;
 }

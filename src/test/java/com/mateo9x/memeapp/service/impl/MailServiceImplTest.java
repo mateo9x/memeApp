@@ -2,6 +2,7 @@ package com.mateo9x.memeapp.service.impl;
 
 import com.mateo9x.memeapp.config.AdditionalAppProperties;
 import com.mateo9x.memeapp.dto.UserDTO;
+import com.mateo9x.memeapp.message.MailMessageSource;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -17,6 +18,9 @@ public class MailServiceImplTest {
 
     @Mock
     private AdditionalAppProperties additionalAppProperties;
+
+    @Mock
+    private MailMessageSource messageSource;
 
     @InjectMocks
     private MailServiceImpl mailService;
