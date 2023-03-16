@@ -10,6 +10,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.mail.javamail.JavaMailSender;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+
 @ExtendWith(MockitoExtension.class)
 public class MailServiceImplTest {
 
@@ -29,6 +32,7 @@ public class MailServiceImplTest {
     public void shouldSendResetPasswordEmail() {
         //when
         UserDTO userDTO = new UserDTO();
+        when(messageSource.getMessage(any(), any())).thenReturn("");
 
         //given
         mailService.sendResetPasswordEmail(userDTO);
