@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {APP_BASE_URL} from "../app.service";
-import {Observable, Subject} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {User} from "../model/user";
 
 @Injectable({
@@ -10,9 +10,14 @@ import {User} from "../model/user";
 export class UserService {
 
   USERS_URL = APP_BASE_URL + '/api/users';
-  userLogged = new Subject<any>();
+  private userLoggedSubject = new BehaviorSubject<any>(null);
+  userLogged = this.userLoggedSubject.asObservable();
 
   constructor(private http: HttpClient) {
+  }
+
+  public setUserLogged(user: any) {
+    this.userLoggedSubject.next(user);
   }
 
   public getUserLogged(): Observable<User> {

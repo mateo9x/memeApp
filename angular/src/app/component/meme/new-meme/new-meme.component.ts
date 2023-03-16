@@ -25,7 +25,7 @@ export class NewMemeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUserLogged().subscribe({
+    this.userService.userLogged.subscribe({
       next: (response) => {
         this.userLogged = response;
       }
