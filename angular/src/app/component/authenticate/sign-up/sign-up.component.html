@@ -41,6 +41,11 @@
           *ngIf="!doesBothPasswordMatches()">{{'authentication.sign-up.placeholders.errors.passwordDoesntMatch' | translate}}</span>
   </div>
 
+  <div class="input">
+    <p-dropdown formControlName="selectedLanguage" [options]="languages" [autoDisplayFirst]="false"
+                placeholder="{{'authentication.sign-up.placeholders.chooseLanguage' | translate}}"/>
+  </div>
+
   <div class="button-container">
     <button pButton type="button" class="p-button-raised p-button-rounded"
             (click)="clearForm()">{{'authentication.sign-up.placeholders.clear' | translate}}

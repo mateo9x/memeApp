@@ -16,7 +16,8 @@ export class SignUpFormService {
       username: this.getValidatorsForUsername(),
       email: this.getValidatorsForEmail(),
       password: this.getValidatorsForPassword(),
-      password2: this.getValidatorsForPassword()
+      password2: this.getValidatorsForPassword(),
+      selectedLanguage: this.getValidatorsForLanguage()
     });
   }
 
@@ -40,6 +41,10 @@ export class SignUpFormService {
     return [null, [Validators.required, Validators.email, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]];
   }
 
+  private getValidatorsForLanguage() {
+    return [[], [Validators.required]];
+  }
+
   public convertFormToUser(fb: FormGroup): User {
     let request = new User();
     request.firstname = this.convertFormToString(this.getFirstnameControl(fb));
@@ -48,6 +53,7 @@ export class SignUpFormService {
     request.email = this.convertFormToString(this.getEmailControl(fb));
     request.password = this.convertFormToString(this.getPasswordControl(fb));
     request.password2 = this.convertFormToString(this.getPassword2Control(fb));
+    request.language = this.convertFormToString((this.getLanguageControl(fb)));
     return request;
   }
 
@@ -73,6 +79,10 @@ export class SignUpFormService {
 
   private getPassword2Control(fb: FormGroup): any {
     return fb.get('password2');
+  }
+
+  private getLanguageControl(fb: FormGroup): any {
+    return fb.get('selectedLanguage');
   }
 
   private convertFormToString(control: AbstractControl): string {

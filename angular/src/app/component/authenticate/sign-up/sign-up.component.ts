@@ -14,6 +14,7 @@ import {LanguageService} from "../../../service/language.service";
 export class SignUpComponent {
 
   form: FormGroup;
+  languages = [{label: 'Polski', value: 'pl'}, {label: 'English', value: 'en'}];
 
   constructor(private userService: UserService, private formService: SignUpFormService, private toastService: ToastService,
               private router: Router, private languageService: LanguageService) {
@@ -95,6 +96,10 @@ export class SignUpComponent {
 
   get password2() {
     return this.form.get('password2');
+  }
+
+  get selectedLanguage() {
+    return this.form.get('selectedLanguage');
   }
 
   clearForm() {
