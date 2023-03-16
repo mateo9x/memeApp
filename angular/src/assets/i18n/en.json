@@ -127,7 +127,8 @@
   "meme-comment": {
     "placeholders": {
       "addComment": "Add comment",
-      "notLogged": "Sign in to add comment"
+      "notLogged": "Sign in to add comment",
+      "textArea": "Type Your comment..."
     },
     "errors": {
       "minLength": "Min length of comment is 10 chars"
