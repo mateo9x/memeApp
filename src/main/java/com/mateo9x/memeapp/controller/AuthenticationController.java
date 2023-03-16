@@ -21,7 +21,7 @@ public class AuthenticationController {
 
     @PostMapping("/authenticate")
     public ResponseEntity<JWTToken> authenticate(@RequestBody @Valid AuthenticateRequest request) {
-        log.info("REST request to authenticate user: {}", request.getUsername());
+        log.info("REST request to authenticate user: {}", request.username());
         JWTToken jwtToken = authenticationService.authenticate(request);
         return ResponseEntity.ok(jwtToken);
     }

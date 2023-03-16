@@ -23,7 +23,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public JWTToken authenticate(AuthenticateRequest request) {
         AtomicReference<JWTToken> jwtToken = new AtomicReference<>();
-        Optional<UserDTO> userDTOOptional = userService.getUserByUsername(request.getUsername());
+        Optional<UserDTO> userDTOOptional = userService.getUserByUsername(request.username());
         userDTOOptional.ifPresent(userDTO -> jwtToken.set(authenticateUser(userDTO, request)));
         if (jwtToken.get() != null) {
             return jwtToken.get();
@@ -32,8 +32,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     private JWTToken authenticateUser(UserDTO userDTO, AuthenticateRequest request) {
-        if (userService.doesBothPasswordsMatches(userDTO.getPassword(), request.getPassword())) {
-            return JWTToken.of(tokenProvider.createToken(userDTO, request.getRememberMe()));
+        if (userService.doesBothPasswordsMatches(userDTO.getPassword(), request.password())) {
+            return JWTToken.of(tokenProvider.createToken(userDTO, request.rememberMe()));
         }
         throw new AuthenticationException("Incorrect password");
     }
