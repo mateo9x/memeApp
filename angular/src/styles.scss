@@ -97,6 +97,15 @@ fa-icon:hover {
   border-color: var(--main-button-color) !important;
 }
 
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+  color: var(--main-text-color-hover) !important;
+}
+
+.p-dropdown:not(.p-disabled):hover, .p-dropdown:not(.p-disabled).p-focus {
+  border-color: var(--main-text-color-hover) !important;
+  box-shadow: none !important;
+}
+
 a {
   font-size: 18px;
   color: var(--main-text-color);

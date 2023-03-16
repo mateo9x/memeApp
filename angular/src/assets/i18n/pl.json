@@ -56,6 +56,7 @@
         "confirmPassword": "Potwierdź hasło",
         "clear": "Wyczyść",
         "signUp": "Zarejestruj",
+        "chooseLanguage": "Wybierz język",
         "errors": {
           "incorrectEmailFormat": "Nie poprawny format adresu e-mail",
           "passwordMinLength": "Wymagane minimum 5 znaków",

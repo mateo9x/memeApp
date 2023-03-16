@@ -2,12 +2,16 @@ package com.mateo9x.memeapp.service.impl;
 
 import com.mateo9x.memeapp.config.AdditionalAppProperties;
 import com.mateo9x.memeapp.dto.UserDTO;
+import com.mateo9x.memeapp.message.MailMessageSource;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.mail.javamail.JavaMailSender;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class MailServiceImplTest {
@@ -18,6 +22,9 @@ public class MailServiceImplTest {
     @Mock
     private AdditionalAppProperties additionalAppProperties;
 
+    @Mock
+    private MailMessageSource messageSource;
+
     @InjectMocks
     private MailServiceImpl mailService;
 
@@ -25,6 +32,7 @@ public class MailServiceImplTest {
     public void shouldSendResetPasswordEmail() {
         //when
         UserDTO userDTO = new UserDTO();
+        when(messageSource.getMessage(any(), any())).thenReturn("");
 
         //given
         mailService.sendResetPasswordEmail(userDTO);
