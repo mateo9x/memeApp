@@ -4,6 +4,15 @@
     !</h3>
 
   <form [formGroup]="form" novalidate>
+
+    <div class="photo-input">
+      <img [src]="getUserPhoto()" alt="">
+      <span pButton label="{{'profile.settings.placeholders.choosePhoto' | translate}}" icon="pi pi-folder-open"
+            (click)="fileInput.click()">
+    <input #fileInput type="file" hidden (change)="doFileInput($event)" accept="image/*">
+  </span>
+    </div>
+
     <div class="input">
       <input pInputText type="text" formControlName="firstname"
              placeholder="{{'profile.settings.placeholders.firstname' | translate}}"/>

@@ -82,7 +82,8 @@
         "lastname": "Lastname",
         "changePassword": "Change password",
         "updateForm": "Update data",
-        "formNotSaved": "Changes not saved will be lost after refreshing the browser"
+        "formNotSaved": "Changes not saved will be lost after refreshing the browser",
+        "choosePhoto": "Choose photo"
       },
       "formUpdate": {
         "success": "Data updated successfully",
@@ -100,7 +101,8 @@
         "strongLabel": "Very good password",
         "promptLabel": "Enter password (min. 5 chars)",
         "buttonLabel": "Update password"
-      }
+      },
+      "userIconChangeError": "Uploaded file is not in a graphic extension, try again"
     }
   },
   "meme": {

@@ -21,6 +21,19 @@ div {
   margin: 10px;
 }
 
+.photo-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo-input > img {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+}
+
 ::ng-deep {
   .p-dropdown {
     width: 100%;
