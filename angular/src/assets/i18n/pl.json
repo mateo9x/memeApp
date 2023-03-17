@@ -82,7 +82,8 @@
         "lastname": "Nazwisko",
         "changePassword": "Zmień hasło",
         "updateForm": "Aktualizuj dane",
-        "formNotSaved": "Zmiany nie zapisane, zostaną utracone po odświeżeniu przeglądarki"
+        "formNotSaved": "Zmiany nie zapisane, zostaną utracone po odświeżeniu przeglądarki",
+        "choosePhoto": "Wybierz zdjęcie"
       },
       "formUpdate": {
         "success": "Dane zaaktualizowane pomyślnie",
@@ -100,7 +101,8 @@
         "strongLabel": "Bardzo dobre hasło",
         "promptLabel": "Wprowadź hasło (min. 5 znaków)",
         "buttonLabel": "Aktualizuj hasło"
-      }
+      },
+      "userIconChangeError": "Wrzucony plik nie jest w formacie graficzny, spróbuj ponownie"
     }
   },
   "meme": {
