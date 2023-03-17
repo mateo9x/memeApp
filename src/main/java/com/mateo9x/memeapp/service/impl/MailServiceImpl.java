@@ -2,7 +2,7 @@ package com.mateo9x.memeapp.service.impl;
 
 import com.mateo9x.memeapp.config.AdditionalAppProperties;
 import com.mateo9x.memeapp.dto.UserDTO;
-import com.mateo9x.memeapp.message.MailMessageSource;
+import com.mateo9x.memeapp.message.MessageBundle;
 import com.mateo9x.memeapp.service.MailService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,18 +24,18 @@ public class MailServiceImpl implements MailService {
 
     private final JavaMailSender javaMailSender;
     private final AdditionalAppProperties additionalAppProperties;
-    private final MailMessageSource messageSource;
+    private final MessageBundle messageBundle;
 
     @Override
     public void sendResetPasswordEmail(UserDTO userDTO) {
         String url = additionalAppProperties.getAppFrontendUrl() + "/#/new-password?" + userDTO.getResetToken();
         String userFullName = prepareUserFullName(userDTO);
-        String text = messageSource.getMessage(RESET_PASSWORD_TEXT, userDTO.getLanguage());
+        String text = messageBundle.getMessage(RESET_PASSWORD_TEXT, userDTO.getLanguage(), MessageBundle.MessageSourceType.MAIL);
         String textFormatted = MessageFormat.format(text, userFullName, url);
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(additionalAppProperties.getAppDNS());
         message.setTo(userDTO.getEmail());
-        message.setSubject(messageSource.getMessage(RESET_PASSWORD_TITLE, userDTO.getLanguage()));
+        message.setSubject(messageBundle.getMessage(RESET_PASSWORD_TITLE, userDTO.getLanguage(), MessageBundle.MessageSourceType.MAIL));
         message.setText(textFormatted);
         try {
             javaMailSender.send(message);
@@ -47,12 +47,12 @@ public class MailServiceImpl implements MailService {
     @Override
     public void sendWelcomeNewUserEmail(UserDTO userDTO) {
         String userFullName = prepareUserFullName(userDTO);
-        String text = messageSource.getMessage(WELCOME_NEW_USER_TEXT, userDTO.getLanguage());
+        String text = messageBundle.getMessage(WELCOME_NEW_USER_TEXT, userDTO.getLanguage(), MessageBundle.MessageSourceType.MAIL);
         String textFormatted = MessageFormat.format(text, userFullName);
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(additionalAppProperties.getAppDNS());
         message.setTo(userDTO.getEmail());
-        message.setSubject(messageSource.getMessage(WELCOME_NEW_USER_TITLE, userDTO.getLanguage()));
+        message.setSubject(messageBundle.getMessage(WELCOME_NEW_USER_TITLE, userDTO.getLanguage(), MessageBundle.MessageSourceType.MAIL));
         message.setText(textFormatted);
         try {
             javaMailSender.send(message);
