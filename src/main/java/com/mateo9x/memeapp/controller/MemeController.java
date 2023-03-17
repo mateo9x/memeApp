@@ -1,6 +1,7 @@
 package com.mateo9x.memeapp.controller;
 
 import com.mateo9x.memeapp.dto.MemeDTO;
+import com.mateo9x.memeapp.model.MemePageable;
 import com.mateo9x.memeapp.service.MemeService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,10 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Slf4j
 @RestController
@@ -37,27 +38,27 @@ public class MemeController {
     }
 
     @GetMapping("/memes/approved")
-    public ResponseEntity<List<MemeDTO>> getApprovedMemes() {
+    public ResponseEntity<MemePageable> getApprovedMemes(@RequestParam(name = "page", required = false) Integer pageSelected) {
         log.info("REST request to get all approved memes");
-        return ResponseEntity.ok(memeService.getApprovedMemes());
+        return ResponseEntity.ok(memeService.getApprovedMemes(pageSelected));
     }
 
     @GetMapping("/memes/pending")
-    public ResponseEntity<List<MemeDTO>> getPendingMemes() {
+    public ResponseEntity<MemePageable> getPendingMemes(@RequestParam(name = "page", required = false) Integer pageSelected) {
         log.info("REST request to get all pending memes");
-        return ResponseEntity.ok(memeService.getPendingMemes());
+        return ResponseEntity.ok(memeService.getPendingMemes(pageSelected));
     }
 
     @GetMapping("/memes/user/{userId}")
-    public ResponseEntity<List<MemeDTO>> getMemesForUser(@PathVariable Long userId) {
+    public ResponseEntity<MemePageable> getMemesForUser(@PathVariable Long userId, @RequestParam(name = "page", required = false) Integer pageSelected) {
         log.info("REST request to get all memes for user: {}", userId);
-        return ResponseEntity.ok(memeService.getMemesForUser(userId));
+        return ResponseEntity.ok(memeService.getMemesForUser(userId, pageSelected));
     }
 
     @GetMapping("/memes/tag/{tag}")
-    public ResponseEntity<List<MemeDTO>> getMemesByTag(@PathVariable String tag) {
+    public ResponseEntity<MemePageable> getMemesByTag(@PathVariable String tag, @RequestParam(name = "page", required = false) Integer pageSelected) {
         log.info("REST request to get all memes by tag: {}", tag);
-        return ResponseEntity.ok(memeService.getMemesByTag(tag));
+        return ResponseEntity.ok(memeService.getMemesByTag(tag, pageSelected));
     }
 
     @PutMapping("/memes")

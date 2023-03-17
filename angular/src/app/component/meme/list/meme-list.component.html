@@ -1,3 +1,13 @@
 <ng-container *ngFor="let meme of memeList">
   <meme [meme]="meme" [user]="userLogged"></meme>
 </ng-container>
+
+<div *ngIf="totalMemes" class="paginator-container">
+
+  <ng-container *ngFor="let page of getPageAmounts()">
+    <a class="p-paginator p-paginator-prev" *ngIf="pageSelected - 1 === page" (click)="getMemesFromPage(page)">{{page}}</a>
+    <a class="p-paginator p-paginator-current" *ngIf="page === pageSelected" (click)="getMemesFromPage(page)">{{page}}</a>
+    <a class="p-paginator p-paginator-next" *ngIf="pageSelected + 1 === page" (click)="getMemesFromPage(page)">{{page}}</a>
+  </ng-container>
+
+</div>
