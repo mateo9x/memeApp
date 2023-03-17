@@ -1,0 +1,18 @@
+.paginator-container {
+  margin-top: 50px;
+}
+
+.p-paginator-current {
+  color: var(--main-text-color-hover);
+}
+
+.p-paginator {
+  background-color: var(--main-meme-button-color);
+  border: 1px solid var(--main-meme-button-color-hover);
+  margin: 0 1px;
+}
+
+.p-paginator:hover {
+  cursor: pointer;
+  color: var(--main-text-color-hover);
+}

@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
-import {Meme} from "../model/meme";
+import {HttpClient, HttpParams} from "@angular/common/http";
+import {Meme, MemePageable} from "../model/meme";
 import {Observable} from "rxjs";
 import {APP_BASE_URL} from "../app.service";
 
@@ -22,20 +22,24 @@ export class MemeService {
     return this.http.get<Meme>(`${this.MEME_URL}/random`);
   }
 
-  public getApprovedMemes(): Observable<Meme[]> {
-    return this.http.get<Meme[]>(`${this.MEME_URL}/approved`);
+  public getApprovedMemes(pageSelected?: number): Observable<MemePageable> {
+    const params = pageSelected ? this.prepareParams(pageSelected) : null;
+    return this.http.get<MemePageable>(`${this.MEME_URL}/approved?${params}`);
   }
 
-  public getPendingMemes(): Observable<Meme[]> {
-    return this.http.get<Meme[]>(`${this.MEME_URL}/pending`);
+  public getPendingMemes(pageSelected?: number): Observable<MemePageable> {
+    const params = pageSelected ? this.prepareParams(pageSelected) : null;
+    return this.http.get<MemePageable>(`${this.MEME_URL}/pending?${params}`);
   }
 
-  public getMemesForUser(userId: number): Observable<Meme[]> {
-    return this.http.get<Meme[]>(`${this.MEME_URL}/user/${userId}`);
+  public getMemesForUser(userId: number, pageSelected?: number): Observable<MemePageable> {
+    const params = pageSelected ? this.prepareParams(pageSelected) : null;
+    return this.http.get<MemePageable>(`${this.MEME_URL}/user/${userId}?${params}`);
   }
 
-  public getMemesByTag(tag: string): Observable<Meme[]> {
-    return this.http.get<Meme[]>(`${this.MEME_URL}/tag/${tag}`);
+  public getMemesByTag(tag: string, pageSelected?: number): Observable<MemePageable> {
+    const params = pageSelected ? this.prepareParams(pageSelected) : null;
+    return this.http.get<MemePageable>(`${this.MEME_URL}/tag/${tag}?${params}`);
   }
 
   public updateMeme(meme: Meme): Observable<Meme> {
@@ -44,6 +48,10 @@ export class MemeService {
 
   public createMeme(meme: Meme): Observable<Meme> {
     return this.http.post<Meme>(`${this.MEME_URL}`, meme);
+  }
+
+  private prepareParams(pageSelected: number) {
+    return new HttpParams().set('page', pageSelected - 1);
   }
 
 }

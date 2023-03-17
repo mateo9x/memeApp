@@ -15,3 +15,9 @@ export class Meme {
   isVideo: boolean;
   userIconFile: any;
 }
+
+export class MemePageable {
+  memeDTOList: Meme[];
+  pageSelected: number;
+  totalMemes: number;
+}

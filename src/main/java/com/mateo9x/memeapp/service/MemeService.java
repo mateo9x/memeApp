@@ -1,18 +1,17 @@
 package com.mateo9x.memeapp.service;
 
 import com.mateo9x.memeapp.dto.MemeDTO;
-
-import java.util.List;
+import com.mateo9x.memeapp.model.MemePageable;
 
 public interface MemeService {
 
-    List<MemeDTO> getApprovedMemes();
+    MemePageable getApprovedMemes(Integer pageSelected);
 
-    List<MemeDTO> getPendingMemes();
+    MemePageable getPendingMemes(Integer pageSelected);
 
-    List<MemeDTO> getMemesForUser(Long userId);
+    MemePageable getMemesForUser(Long userId, Integer pageSelected);
 
-    List<MemeDTO> getMemesByTag(String tag);
+    MemePageable getMemesByTag(String tag, Integer pageSelected);
 
     MemeDTO updateMeme(MemeDTO memeDTO);
 

@@ -12,8 +12,15 @@ import {UserService} from "../../../service/user.service";
 })
 export class MemeListComponent implements OnInit {
 
+  pageSelected = 1;
+  totalMemes: number;
+  memsPerPage = 5;
+  maxPages = 1;
   memeList: Meme[] = [];
   userLogged: User;
+  memeListType = 'approved';
+  userId: number;
+  tag: string;
 
   constructor(private memeService: MemeService, private activatedRoute: ActivatedRoute, private userService: UserService) {
   }
@@ -31,11 +38,11 @@ export class MemeListComponent implements OnInit {
           } else {
             const userMemes = urlSegments.find(urlSegment => urlSegment.path === 'user');
             if (userMemes) {
-              const userId = JSON.parse(urlSegments[urlSegments.length - 1].path);
-              this.getMemesForUser(userId);
+              this.userId = JSON.parse(urlSegments[urlSegments.length - 1].path);
+              this.getMemesForUser();
             } else {
-              const tag = urlSegments[urlSegments.length - 1].path;
-              this.getMemesByTag(tag);
+              this.tag = urlSegments[urlSegments.length - 1].path;
+              this.getMemesByTag();
             }
           }
         }
@@ -51,35 +58,78 @@ export class MemeListComponent implements OnInit {
     });
   }
 
-  getApprovedMemes() {
-    this.memeService.getApprovedMemes().subscribe({
+  getApprovedMemes(page?: number) {
+    this.memeService.getApprovedMemes(page).subscribe({
       next: (response) => {
-        this.memeList = response;
+        this.memeList = response.memeDTOList;
+        this.pageSelected = response.pageSelected;
+        this.totalMemes = response.totalMemes;
+        this.calculateMaxPages();
+        this.memeListType = 'approved';
       }
     });
   }
 
-  getPendingMemes() {
-    this.memeService.getPendingMemes().subscribe({
+  getPendingMemes(page?: number) {
+    this.memeService.getPendingMemes(page).subscribe({
       next: (response) => {
-        this.memeList = response;
+        this.memeList = response.memeDTOList;
+        this.pageSelected = response.pageSelected;
+        this.totalMemes = response.totalMemes;
+        this.calculateMaxPages();
+        this.memeListType = 'pending';
       }
     });
   }
 
-  getMemesForUser(userId: number) {
-    this.memeService.getMemesForUser(userId).subscribe({
+  getMemesForUser(page?: number) {
+    this.memeService.getMemesForUser(this.userId, page).subscribe({
       next: (response) => {
-        this.memeList = response;
+        this.memeList = response.memeDTOList;
+        this.pageSelected = response.pageSelected;
+        this.totalMemes = response.totalMemes;
+        this.calculateMaxPages();
+        this.memeListType = 'user';
       }
     });
   }
 
-  getMemesByTag(tag: string) {
-    this.memeService.getMemesByTag(tag).subscribe({
+  getMemesByTag(page?: number) {
+    this.memeService.getMemesByTag(this.tag, page).subscribe({
       next: (response) => {
-        this.memeList = response;
+        this.memeList = response.memeDTOList;
+        this.pageSelected = response.pageSelected;
+        this.totalMemes = response.totalMemes;
+        this.calculateMaxPages();
+        this.memeListType = 'tag';
       }
     });
   }
+
+  calculateMaxPages() {
+    const modulo = this.totalMemes / (this.memsPerPage * this.pageSelected);
+    if (modulo >= 1) {
+      this.maxPages = this.maxPages + 1;
+    } else {
+      this.maxPages = this.maxPages - 1;
+    }
+  }
+
+  getPageAmounts() {
+    return Array(this.maxPages).fill(1).map((x, i) => i + 1);
+  }
+
+  getMemesFromPage(pageNumber: number) {
+    if (this.memeListType === 'approved') {
+      this.getApprovedMemes(pageNumber);
+    } else if (this.memeListType === 'pending') {
+      this.getPendingMemes(pageNumber);
+    } else if (this.memeListType === 'user') {
+      this.getMemesForUser(pageNumber);
+    } else {
+      this.getMemesByTag(pageNumber);
+    }
+    this.calculateMaxPages();
+  }
+
 }
