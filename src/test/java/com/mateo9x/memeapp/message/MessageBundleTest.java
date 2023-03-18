@@ -22,7 +22,7 @@ public class MessageBundleTest {
         //given
         UserDTO userDTO = prepareUserDTO();
         //when
-        String message = messageBundle.getMessage(BUNDLE_NOT_EXISTING, userDTO.getLanguage(), MessageBundle.MessageSourceType.MAIL);
+        String message = messageBundle.getMessage(BUNDLE_NOT_EXISTING, userDTO.getLanguage(), MessageBundle.Type.MAIL);
 
         //then
         Assertions.assertNull(message);
@@ -33,7 +33,7 @@ public class MessageBundleTest {
         //given
         UserDTO userDTO = prepareUserDTO();
         //when
-        String message = messageBundle.getMessage(BUNDLE_RESET_PASSWORD, userDTO.getLanguage(), MessageBundle.MessageSourceType.MAIL);
+        String message = messageBundle.getMessage(BUNDLE_RESET_PASSWORD, userDTO.getLanguage(), MessageBundle.Type.MAIL);
 
         //then
         Assertions.assertNotNull(message);
