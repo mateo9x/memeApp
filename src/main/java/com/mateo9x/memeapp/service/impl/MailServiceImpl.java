@@ -30,12 +30,12 @@ public class MailServiceImpl implements MailService {
     public void sendResetPasswordEmail(UserDTO userDTO) {
         String url = additionalAppProperties.getAppFrontendUrl() + "/#/new-password?" + userDTO.getResetToken();
         String userFullName = prepareUserFullName(userDTO);
-        String text = messageBundle.getMessage(RESET_PASSWORD_TEXT, userDTO.getLanguage(), MessageBundle.MessageSourceType.MAIL);
+        String text = messageBundle.getMessage(RESET_PASSWORD_TEXT, userDTO.getLanguage(), MessageBundle.Type.MAIL);
         String textFormatted = MessageFormat.format(text, userFullName, url);
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(additionalAppProperties.getAppDNS());
         message.setTo(userDTO.getEmail());
-        message.setSubject(messageBundle.getMessage(RESET_PASSWORD_TITLE, userDTO.getLanguage(), MessageBundle.MessageSourceType.MAIL));
+        message.setSubject(messageBundle.getMessage(RESET_PASSWORD_TITLE, userDTO.getLanguage(), MessageBundle.Type.MAIL));
         message.setText(textFormatted);
         try {
             javaMailSender.send(message);
@@ -47,12 +47,12 @@ public class MailServiceImpl implements MailService {
     @Override
     public void sendWelcomeNewUserEmail(UserDTO userDTO) {
         String userFullName = prepareUserFullName(userDTO);
-        String text = messageBundle.getMessage(WELCOME_NEW_USER_TEXT, userDTO.getLanguage(), MessageBundle.MessageSourceType.MAIL);
+        String text = messageBundle.getMessage(WELCOME_NEW_USER_TEXT, userDTO.getLanguage(), MessageBundle.Type.MAIL);
         String textFormatted = MessageFormat.format(text, userFullName);
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(additionalAppProperties.getAppDNS());
         message.setTo(userDTO.getEmail());
-        message.setSubject(messageBundle.getMessage(WELCOME_NEW_USER_TITLE, userDTO.getLanguage(), MessageBundle.MessageSourceType.MAIL));
+        message.setSubject(messageBundle.getMessage(WELCOME_NEW_USER_TITLE, userDTO.getLanguage(), MessageBundle.Type.MAIL));
         message.setText(textFormatted);
         try {
             javaMailSender.send(message);

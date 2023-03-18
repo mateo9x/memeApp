@@ -12,13 +12,13 @@ import java.util.ResourceBundle;
 @AllArgsConstructor
 public class MessageBundle {
 
-    public String getMessage(String messageKey, String language, MessageSourceType messageSourceType) {
+    public String getMessage(String messageKey, String language, Type type) {
         Locale locale = Locale.forLanguageTag(language);
         try {
-            return (String) ResourceBundle.getBundle(messageSourceType.getValue(), locale).getObject(messageKey);
+            return (String) ResourceBundle.getBundle(type.getValue(), locale).getObject(messageKey);
         } catch (Exception e) {
             try {
-                return (String) ResourceBundle.getBundle(messageSourceType.getValue(), Locale.US).getObject(messageKey);
+                return (String) ResourceBundle.getBundle(type.getValue(), Locale.US).getObject(messageKey);
             } catch (Exception ex) {
                 log.error("Bundle not found: {}", messageKey);
                 return null;
@@ -26,7 +26,7 @@ public class MessageBundle {
         }
     }
 
-    public enum MessageSourceType {
+    public enum Type {
         MAIL("i18n/mail");
 
         private final String value;
@@ -35,7 +35,7 @@ public class MessageBundle {
             return value;
         }
 
-        MessageSourceType(String value) {
+        Type(String value) {
             this.value = value;
         }
     }
