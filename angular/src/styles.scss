@@ -1,3 +1,5 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
 :root {
   --main-background-color: #ffffff;
   --main-navbar-background-color: #e5e4e4;
@@ -18,14 +20,12 @@
 
 html, body {
   height: 100%;
+  width: 100%;
 }
 
 body {
   margin: 0;
   font-family: tiltNeon, Roboto, "Helvetica Neue", sans-serif;
-}
-
-body {
   color: var(--main-text-color);
   background-color: var(--main-background-color);
 }
@@ -119,4 +119,10 @@ a:hover {
 .span-error {
   color: red;
   font-size: 12px;
+}
+
+@media screen and (max-width: 700px) {
+  a {
+    font-size: 14px;
+  }
 }

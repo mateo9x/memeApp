@@ -1,10 +1,9 @@
 .meme-container {
   display: grid;
   justify-content: center;
-  padding: 30px;
+  margin: 10px auto;
   width: 600px;
   max-height: 600px;
-  margin: auto;
 }
 
 .user-img {
@@ -87,4 +86,13 @@ fa-icon {
 
 fa-icon:hover {
   color: var(--main-background-color);
+}
+
+@media screen and (max-width: 700px) {
+  .meme-container {
+    width: 90vw;
+  }
+  .meme-img {
+     width: 90vw;
+   }
 }
